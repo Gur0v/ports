@@ -1,0 +1,28 @@
+# Description: Keyboard-driven Wayland notification daemon
+# URL: https://codeberg.org/dnkl/fnott
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: dbus fcft libpng meson ninja scdoc tllist wayland wayland-protocols
+
+name=fnott
+version=1.8.0
+release=1
+source=(https://codeberg.org/dnkl/$name/archive/$version.tar.gz)
+renames=($name-$version.tar.gz)
+
+build() {
+    meson setup $name build \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --buildtype=plain \
+        --wrap-mode nodownload \
+        -D b_lto=true \
+        -D b_pie=true \
+        -D docs=enabled
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+
+    install -Dm644 $name/LICENSE $PKG/usr/share/licenses/$name/LICENSE
+
+    rm -r $PKG/usr/share/doc
+    rm -rf $PKG/usr/lib/systemd
+}
