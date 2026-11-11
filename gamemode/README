@@ -1,0 +1,5 @@
+Requires a D-Bus session bus. The daemon is started through D-Bus activation.
+Add your user to the gamemode group for privileged optimisations, then log in again.
+
+PAM renicing limits are not installed. For 32-bit games, a 32-bit build of the
+client libraries is also required.

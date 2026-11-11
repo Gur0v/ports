@@ -1,0 +1,53 @@
+--- a/meson.build
++++ b/meson.build
+@@ -87,7 +87,7 @@
+ sd_bus_args = []
+ sd_bus_dep = []
+ if sd_bus_provider == 'systemd'
+-    sd_bus_dep = dependency('libsystemd')
++    sd_bus_dep = dependency('basu')
+ elif sd_bus_provider == 'elogind'
+     sd_bus_args += ['-DUSE_ELOGIND']
+     sd_bus_dep = dependency('libelogind')
+--- a/daemon/gamemode-dbus.c
++++ b/daemon/gamemode-dbus.c
+@@ -36,13 +36,8 @@
+ #include "common-logging.h"
+ #include "common-pidfds.h"
+ 
+-#ifdef USE_ELOGIND
+-#include <elogind/sd-bus.h>
+-#include <elogind/sd-daemon.h>
+-#else
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-daemon.h>
+-#endif
++#include <basu/sd-bus.h>
++#define sd_notifyf(...) ((void)0)
+ 
+ #include <assert.h>
+ #include <errno.h>
+--- a/daemon/gamemode-context.c
++++ b/daemon/gamemode-context.c
+@@ -49,7 +49,8 @@
+ #include <stdatomic.h>
+ #include <stdlib.h>
+ #include <sys/time.h>
+-#include <systemd/sd-daemon.h> /* TODO: Move usage to gamemode-dbus.c */
++#define sd_notify(...) ((void)0)
++#define sd_notifyf(...) ((void)0)
+ #include <unistd.h>
+ 
+ /**
+--- a/daemon/gamemoded.c
++++ b/daemon/gamemoded.c
+@@ -61,7 +61,8 @@
+ #include <getopt.h>
+ #include <signal.h>
+ #include <sys/stat.h>
+-#include <systemd/sd-daemon.h> /* TODO: Move usage to gamemode-dbus.c */
++#define sd_notify(...) ((void)0)
++#define sd_notifyf(...) ((void)0)
+ #include <unistd.h>
+ 
+ #define USAGE_TEXT                                                                                 \

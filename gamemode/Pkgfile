@@ -1,0 +1,31 @@
+# Description: Optimise Linux system performance on demand for games
+# URL: https://github.com/FeralInteractive/gamemode
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: basu dbus inih meson ninja polkit
+
+name=gamemode
+version=1.8.2
+release=1
+source=(https://github.com/FeralInteractive/$name/archive/$version/$name-$version.tar.gz
+        basu.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < $SRC/basu.patch
+    meson setup build \
+        --prefix=/usr \
+        --libdir=lib \
+        --libexecdir=lib/gamemode \
+        --buildtype=plain \
+        --wrap-mode nodownload \
+        -D b_lto=true \
+        -D b_pie=true \
+        -D with-systemd-user-unit=false \
+        -D with-systemd-group=false \
+        -D with-pam-renicing=false \
+        -D with-examples=false
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+    install -Dm644 LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE
+    install -Dm644 example/gamemode.ini $PKG/usr/share/gamemode/gamemode.ini
+}
