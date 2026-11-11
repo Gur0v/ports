@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzPnI8sfl0a5AgpL05vOufAUGmexPn1zXdWutBRc3p0SgYhhfbCmdnwFmKVxCoeYmKYpHweH6LUlcVfTFCVSFLwo=
+SHA256 (Pkgfile) = 4ec1c38b9f7c6cd758323e5173c03c7d2d7e39d38f9da8e988df82e3817bc4bb
+SHA256 (.footprint) = 182e836d659d3af546dc0727177a917e7509679ae0e702be7360e1d8fa29d269
+SHA256 (pulseaudio-17.0.tar.xz) = 053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5
