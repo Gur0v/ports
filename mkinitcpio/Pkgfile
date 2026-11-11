@@ -1,0 +1,28 @@
+# Description: Modular initramfs generator (non-systemd CRUX integration)
+# URL: https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: bash coreutils cpio eudev file findutils grep gzip kbd kmod libarchive meson mkinitcpio-busybox ninja util-linux xz zstd
+
+name=mkinitcpio
+version=42.2
+release=1
+source=(https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio/-/archive/v$version/$name-v$version.tar.gz
+        crux.patch)
+
+build() {
+    # Release archives may have either directory spelling.
+    cd $name-$version 2>/dev/null || cd $name-v$version
+    patch -p1 < $SRC/crux.patch
+    meson setup build --prefix=/usr --libdir=lib --sysconfdir=/etc \
+        -Dsystemd=disabled -Dsystemd_hooks=false -Dalpm=false \
+        -Dkernel_install=false -Dpresets=false -Ddocs=false \
+        -Dvconsole_conf=rc.conf
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+    install -d $PKG/usr/share/doc/$name
+    install -m644 man/*.adoc $PKG/usr/share/doc/$name
+    rm -f $PKG/usr/lib/initcpio/install/lvm2 \
+        $PKG/usr/lib/initcpio/udev/69-dm-lvm.rules
+    rm -rf $PKG/usr/lib/tmpfiles.d
+}

@@ -1,0 +1,77 @@
+--- a/mkinitcpio
++++ b/mkinitcpio
+@@ -36,7 +36,7 @@
+ declare -A _runhooks _addedmodules _modpaths _autodetect_cache
+ 
+ # export a sane PATH
+-export PATH="@BINDIR@:/bin"
++export PATH="@BINDIR@:/usr/sbin:/sbin:/bin"
+ 
+ # Sanitize environment further
+ # GREP_OPTIONS="--color=always" will break everything
+--- a/meson.build
++++ b/meson.build
+@@ -2,7 +2,7 @@
+ 
+ project(
+     'mkinitcpio',
+-    version: run_command('tools/dist.sh', 'get-version', check: true).stdout().strip(),
++    version: '42.2',
+     license: 'GPL-2.0-only',
+     license_files: 'LICENSE',
+     meson_version: '>=1.4.0',
+@@ -65,7 +65,7 @@
+     udevd_dirs = []
+ endif
+ 
+-udevd = find_program('systemd-udevd', 'udevd', dirs: udevd_dirs, required: true)
++udevd = find_program('/sbin/udevd', required: true)
+ tmpfiles = find_program('systemd-tmpfiles', required: want_systemd)
+ shellcheck = find_program('shellcheck', required: false)
+ 
+--- a/install/udev
++++ b/install/udev
+@@ -3,10 +3,10 @@
+ build() {
+     map add_binary \
+         '@UDEVD_PATH@' \
+-        '/usr/bin/udevadm' \
+-        '/usr/lib/udev/ata_id' \
+-        '/usr/lib/udev/scsi_id' \
+-        '/usr/lib/libkmod.so.2'
++        '/sbin/udevadm' \
++        '/lib/udev/ata_id' \
++        '/lib/udev/scsi_id' \
++        '/lib/libkmod.so.2'
+ 
+     # meson-templated path
+     # shellcheck disable=SC2157
+@@ -21,7 +21,7 @@
+         '80-drivers.rules'
+ 
+     # add hwdb binaries to the initramfs
+-    for f in /usr/lib/udev/hwdb.bin /etc/udev/hwdb.bin; do
++    for f in /lib/udev/hwdb.bin /etc/udev/hwdb.bin; do
+         if [[  -f "$f" ]]; then
+             add_file "$f"
+         fi
+--- a/install/keymap
++++ b/install/keymap
+@@ -5,6 +5,7 @@
+     # prevent conflicting variables from affecting vconsole.conf values
+     # shellcheck disable=SC2034
+     local KEYMAP KEYMAP_TOGGLE FONT FONT_MAP FONT_UNIMAP XKBLAYOUT XKBMODEL XKBVARIANT XKBOPTIONS
++    local BLANKTIME HOSTNAME SYSLOG TIMEZONE USE_COLOR VERBOSE SERVICES
+ 
+     # subshell to avoid namespace pollution
+     (
+--- a/install/consolefont
++++ b/install/consolefont
+@@ -5,6 +5,7 @@
+     # prevent conflicting variables from affecting vconsole.conf values
+     # shellcheck disable=SC2034
+     local KEYMAP KEYMAP_TOGGLE FONT FONT_MAP FONT_UNIMAP XKBLAYOUT XKBMODEL XKBVARIANT XKBOPTIONS
++    local BLANKTIME HOSTNAME SYSLOG TIMEZONE USE_COLOR VERBOSE SERVICES
+ 
+     add_binary setfont
+ 
