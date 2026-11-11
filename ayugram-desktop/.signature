@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzNMkPV+7pK4NkY7SHLDTqciFl4msSeD3qKdzrKIfBMgdPkDiHvWALHCkpfGNhbsvNHBgEjckOjUmQ/MwiFJN8gs=
+SHA256 (Pkgfile) = 80a2112b7a51bc1c013f316ae537e9e4e392c44f32bbc734502d73534ec00d5a
+SHA256 (.footprint) = 1420602d2ba1a255118999ff3a645e6bd89a50f2ebef960a63be7584cc2d8e49
+SHA256 (AyuGramDesktop-7.2.9-full.tar.gz) = ead2665a32f38277e76d3041a5b780100afa0d87b7b1440c1278c5229936a842
+SHA256 (td-bc9c263e2bfee06aaab41e82db51a103376030bc.tar.gz) = b4eb7ed255cbdce826211c9b8f84b05982dce0f02879b833e50020c3bff49576
