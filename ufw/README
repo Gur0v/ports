@@ -1,0 +1,3 @@
+Add ufw before network services in the SERVICES array in /etc/rc.conf.
+Enable it with ufw enable after configuring the rules.
+Do not enable it alongside another firewall manager.

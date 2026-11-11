@@ -1,0 +1,21 @@
+# Description: Uncomplicated firewall frontend for iptables
+# URL: https://launchpad.net/ufw
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: iptables python3-setuptools
+
+name=ufw
+version=0.36.2
+release=1
+source=(https://launchpad.net/$name/0.36/$version/+download/$name-$version.tar.gz
+        ufw.service)
+
+build() {
+    cd $name-$version
+    sed -i "s|os.path.join('/lib', 'ufw')|os.path.join('/usr/lib', 'ufw')|" setup.py
+    sed -i 's|^net/ipv4/tcp_sack=1|#net/ipv4/tcp_sack=1|' conf/sysctl.conf
+    GIT_CEILING_DIRECTORIES="$SRC" \
+        python3 setup.py install --prefix=/usr --root=$PKG --optimize=1
+    install -Dm644 shell-completion/bash $PKG/usr/share/bash-completion/completions/ufw
+    install -Dm755 $SRC/ufw.service $PKG/etc/rc.d/ufw
+    rm -r $PKG/usr/share/ufw/messages
+}

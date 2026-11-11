@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# /etc/rc.d/ufw: start/stop the firewall
+#
+
+case $1 in
+    start|stop|restart|status)
+        /usr/lib/ufw/ufw-init "$1"
+        ;;
+    *)
+        echo "usage: $0 [start|stop|restart|status]"
+        exit 1
+        ;;
+esac
