@@ -1,0 +1,16 @@
+# Description: Fullscreen overlay interface for GPU Screen Recorder
+# URL: https://git.dec05eba.com/gpu-screen-recorder-ui/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: dbus desktop-file-utils gpu-screen-recorder gpu-screen-recorder-notification hicolor-icon-theme libcap libdrm libglvnd libpulse meson ninja wayland xorg-libx11 xorg-libxcomposite xorg-libxcursor xorg-libxext xorg-libxfixes xorg-libxi xorg-libxrandr xorg-libxrender
+
+name=gpu-screen-recorder-ui
+version=1.10.7
+release=1
+source=(https://dec05eba.com/snapshot/$name.git.$version.tar.gz)
+
+build() {
+    meson setup build --prefix=/usr --libdir=lib --buildtype=release \
+        --wrap-mode=nodownload -Dsystemd=false -Dcapabilities=false
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+}

@@ -1,0 +1,11 @@
+Run gsr-ui to open the interface. No service or autostart is enabled.
+
+Wayland global hotkeys need access to input devices and /dev/uinput.
+Upstream's privileged helper requires CAP_SETUID for this. If wanted,
+explicitly grant it as root after installation and after package upgrades:
+
+    setcap cap_setuid+ep /usr/bin/gsr-global-hotkeys
+
+This allows the helper to become root. Review this before enabling it.
+If using keyd or another remapper, exclude the virtual keyboard named
+"gsr-ui virtual keyboard" (dec0:5eba) to avoid input feedback loops.

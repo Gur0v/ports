@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzEZENTSQGELMExiNHBOVmwj02nrZQIPBA4/1jIt0eUSWr2XI95i1GnnOH7WtuPtt1UJ2u+bbpQbMOvTWqtbUoQg=
+SHA256 (Pkgfile) = da85997937019802328aac2690f0556ac4881d8be904a8e23184ff7f56eaf64a
+SHA256 (.footprint) = e3b4139100d038a7c32e0bfbe8dc0e014d09f90d7d3439ecf30ed29468ee67bb
+SHA256 (gpu-screen-recorder-ui.git.1.10.7.tar.gz) = 8644045c0e5786552aaa747dde8c0441dc01d16783971fb2c22aa47f08a9470e
