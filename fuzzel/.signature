@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzOWs3dxcY5itiCJ0u1kXoRfp1Z9Fnb6iWust0oGk7rQ0C/wj4zfpT72uGQEz3CDKQUKlm6Zp45U0VAysJOxLSw0=
+SHA256 (Pkgfile) = 4fdad9ad6b274783b15e632c32420aa8f17d63c51c78f7a0abfe791564a216e4
+SHA256 (.footprint) = d4693cf1fc92915f9242fb3dfaf1cf1100858823db33ab2fd055766c156a379e
+SHA256 (fuzzel-1.15.0.tar.gz) = 95b6c022fc1f1c7ab586d47c1594417cc311bf41ea8f5f8b5641478da7b5cf3b
