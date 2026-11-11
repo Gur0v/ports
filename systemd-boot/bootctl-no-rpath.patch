@@ -1,0 +1,10 @@
+--- a/src/bootctl/meson.build
++++ b/src/bootctl/meson.build
+@@ -19,6 +19,7 @@
+         executable_template + {
+                 'name' : 'bootctl',
+                 'public' : true,
++                'install_rpath' : '',  # CRUX links private systemd code statically.
+                 'conditions' : [
+                           'HAVE_BLKID',
+                 ],

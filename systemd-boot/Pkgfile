@@ -1,0 +1,48 @@
+# Description: Standalone bootctl, EFI boot manager and UKI stubs (no init or udev)
+# URL: https://systemd.io/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: gperf libcap meson ninja python3-jinja2 python3-pyelftools util-linux
+
+name=systemd-boot
+version=262.2
+release=1
+source=(https://github.com/systemd/systemd/archive/refs/tags/v$version.tar.gz
+        standalone.meson efi-only.patch bootctl-no-rpath.patch)
+renames=(systemd-$version.tar.gz)
+
+build() {
+    cd systemd-$version
+    # Build only bootctl from the unmodified userspace project. Private
+    # libshared/libsystemd code is linked into it, not installed as libraries.
+    patch -p1 < "$SRC/bootctl-no-rpath.patch"
+    meson setup build-bootctl \
+        --prefix=/usr --libdir=lib --libexecdir=lib --buildtype=release \
+        --wrap-mode=nodownload -Dauto_features=disabled -Dmode=release \
+        -Dtests=false -Dbootloader=disabled -Dukify=disabled -Dman=disabled \
+        -Dkernel-install=false -Dlink-boot-shared=false -Dblkid=enabled \
+        -Ddefault-dnssec=no -Ddefault-dns-over-tls=no
+    meson compile -C build-bootctl bootctl
+    env -i PATH="$PATH" HOME="$SRC" LC_ALL=C build-bootctl/bootctl --version
+    env -i PATH="$PATH" HOME="$SRC" LC_ALL=C build-bootctl/bootctl --help >/dev/null
+    install -Dm755 build-bootctl/bootctl "$PKG/usr/bin/bootctl"
+    # No upstream userspace install: it would install unrelated system files.
+    patch -p1 < "$SRC/efi-only.patch"
+    cp "$SRC/standalone.meson" meson.build
+    # Do not leak host distribution SBAT identity into CRUX binaries.
+    # These are unsigned; a Secure Boot deployment needs its own trust policy.
+    CFLAGS= LDFLAGS= meson setup build \
+        --prefix=/usr --buildtype=release --wrap-mode=nodownload \
+        -Dmode=release -Dsbat-distro= -Db_lto=false
+    meson compile -C build
+    # Meson records the test environment: do not retain unrelated credentials.
+    env -i PATH="$PATH" HOME="$SRC" LC_ALL=C \
+        meson test -C build --print-errorlogs
+    # Deliberately do not invoke upstream's system-wide installer.
+    install -d "$PKG/usr/lib/systemd/boot/efi"
+    for image in build/src/boot/*.efi build/src/boot/*.efi.stub; do
+        test -f "$image"
+        install -m644 "$image" "$PKG/usr/lib/systemd/boot/efi/"
+    done
+    install -Dm644 LICENSE.LGPL2.1 "$PKG/usr/share/licenses/$name/LICENSE.LGPL2.1"
+    install -Dm644 LICENSE.GPL2 "$PKG/usr/share/licenses/$name/LICENSE.GPL2"
+}

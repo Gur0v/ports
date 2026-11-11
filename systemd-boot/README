@@ -1,0 +1,8 @@
+Provides bootctl, the EFI boot manager and UKI stubs without systemd init.
+No services or automatic bootloader updates are installed.
+
+Installing this package does not write to the ESP. Configure and deploy the
+bootloader separately; retain a working recovery entry. EFI images are unsigned.
+Secure Boot requires your own signing and trust configuration.
+
+systemd signing and TPM measurement helpers are not included.
