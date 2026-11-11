@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzHECyQ3snzK3C+v8IXKcc1gkNmvxa5PRKypNZ2uPpmVYqdWYzMqcy1L/T8gmIlxCRnNosF8MKxrm78q2G5FR9g0=
+SHA256 (Pkgfile) = e11fef37d0267de622f18d15f0f700aed1a455fc24ba09f248d493cd30747a88
+SHA256 (.footprint) = f153a7c5fd354f16d3492f72bcc727ffce1b9bc719d348693aeb7b6e3d7ac9a8
+SHA256 (xdg-user-dirs-gtk-0.16.tar.xz) = be825de7f89175db5ead0cd3744d2761109c70943251a87092259163025520a9
+SHA256 (0001-desktop-Show-in-more-environments.patch) = daf8c3b649220dbbf9a45c5432709d21832340db95c4cc71de82da20643c1503
