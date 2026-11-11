@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzDXnvTcV8DFav5AVK4R+DJDUHEqYfMKId3+2dxDRdnlPyGl6bnqWV0HSFVKzqOYjJmZuCAdIopgce3pCxkbV4AY=
+SHA256 (Pkgfile) = 1edafde8ec0f35fbb8c8029ff2428a24567f7d3868aaa8081b1a497666b6d2bd
+SHA256 (.footprint) = 5a467bd6feb8ee8c2504f8fddbf267f70d930e20bcb91c708d53e20113867ece
+SHA256 (qt6-webengine-bin-6.12.0-0-202607081027.7z) = 05c476fcd217d7eab5657d19791849bdff5770acfb87086690c679c7c8c92f84
