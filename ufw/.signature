@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzMnmqiFS7gz27T3BIFa31OdMeKd7kwTgNZTO061PMN01lcvM9q1rrh0eyeDXRg4zE11QOK1XaW9wm6IPdEU1gAY=
+SHA256 (Pkgfile) = e9327b5d2a98de451f471712d634634a4095fde3c798a1c3c9f54c088de860d4
+SHA256 (.footprint) = c349fc22e0b37985f80908c9c42bf1cce536eb0cf9b335caedfb2dc0bde8b2fe
+SHA256 (ufw-0.36.2.tar.gz) = 2a57a99eecef6b44db3537ed2520b30bae3759f8465456e22e404cd643838bf5
+SHA256 (ufw.service) = 6d4734783b9cb7222d34180eb0c8c74e575f1a586910da824a9767ee76802526
