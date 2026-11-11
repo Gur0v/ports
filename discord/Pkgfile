@@ -1,0 +1,17 @@
+# Description: Proprietary voice, video and text chat client
+# URL: https://discord.com/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib cups gtk3 hicolor-icon-theme libdrm libnotify libpulse libxkbcommon mesa nss wayland xdg-utils xorg-libxcomposite xorg-libxdamage xorg-libxrandr xorg-libxscrnsaver xorg-libxshmfence
+# Optional: libayatana-appindicator
+
+name=discord
+version=1.0.169
+release=1
+source=(https://stable.dl2.discordapp.net/apps/linux/$version/$name-$version.tar.gz)
+
+build() {
+    install -Dm755 Discord/discord $PKG/usr/bin/discord
+    install -Dm755 Discord/updater_bootstrap $PKG/opt/discord/updater_bootstrap
+    install -Dm644 Discord/discord.desktop $PKG/usr/share/applications/discord.desktop
+    install -Dm644 Discord/discord.png $PKG/usr/share/icons/hicolor/256x256/apps/discord.png
+}

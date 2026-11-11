@@ -1,0 +1,2 @@
+Downloads and updates Discord under ${XDG_CONFIG_HOME:-$HOME/.config}/discord.
+Requires internet access on first launch and unprivileged user namespaces.
