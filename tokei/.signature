@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzPgCIFFtYSbGwX7GEziNXcJOdW7aB6pwIw0Anl7gQ4UAu4AI+qxlzCGh/P48HzPsjnkkOuUvGmv0pt6MlKn6Pwg=
+SHA256 (Pkgfile) = 6ad472fd17486c1661d5bd55674ec38d147e9603612ff62c5c2b36cae0a10339
+SHA256 (.footprint) = fa8732d306dced9a0f90f5b70e24a18d1047c8e0595b1ff8603622125171ff17
+SHA256 (tokei-15.0.0.tar.gz) = 966da7b9a81ac6cb777b9f159f4c02e5b83a8b8bd30ebf5991007839926b600c
