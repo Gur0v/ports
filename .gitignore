@@ -1,0 +1,27 @@
+# Build directories
+work/
+target/
+
+# Downloaded sources and built packages
+*.tar.*
+*.tgz
+*.tbz2
+*.txz
+*.zip
+*.7z
+*.deb
+*.rpm
+*.distro
+
+# Downloaded license files
+/mullvad-vpn/mullvad-*-LICENSE.md
+/pear-desktop/pear-desktop-*-license
+
+# Editor leftovers
+*~
+*.swp
+*.swo
+
+.nvc-state.json
+.nvc-state.json.lock
+.nvc-state.json.tmp.*

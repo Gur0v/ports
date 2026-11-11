@@ -1,0 +1,71 @@
+#!/bin/sh
+set -u
+root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd) || exit 1
+nvc=${NVC:-nvc}
+tab=$(printf '\t')
+
+if [ "$#" -eq 0 ]; then
+	for recipe in "$root"/*/Pkgfile; do
+		[ -f "$recipe" ] || continue
+		dir=${recipe%/Pkgfile}
+		set -- "$@" "${dir##*/}"
+	done
+fi
+for port do
+	case "$port" in
+		''|.|..|*/*) ;;
+		*) [ ! -f "$root/$port/Pkgfile" ] || continue ;;
+	esac
+	printf 'Unknown port: %s\n' "$port" >&2
+	exit 2
+done
+
+recipe_value()
+{
+	if ! LC_ALL=C awk -v key="$1" '
+		index($0, key "=") == 1 {
+			count++
+			value = substr($0, length(key) + 2)
+		}
+		END {
+			if (count != 1 || value !~ /^[A-Za-z0-9][A-Za-z0-9._+-]*$/)
+				exit 1
+			print value
+		}
+	' "$root/$port/Pkgfile"; then
+		printf '%s: expected one literal %s assignment in Pkgfile\n' "$port" "$1" >&2
+		return 1
+	fi
+}
+
+check_port()
+{
+	case "$port" in
+		tg_owt|tlottie) return 0 ;;
+	esac
+	packaged=$(recipe_value version) || return 1
+	if [ "$port" = qt6-webengine-bin ]; then
+		build=$(recipe_value _build) || return 1
+		packaged=$packaged-$build
+	fi
+	result=$("$nvc" -c "$root/$port/.nvc.ini") || return 1
+	case "$result" in
+		*'
+'*|"$port$tab"*"$tab"*) upstream= ;;
+		"$port$tab"*) upstream=${result#"$port$tab"} ;;
+		*) upstream= ;;
+	esac
+	if [ -z "$upstream" ]; then
+		printf '%s: expected one upstream result\n' "$port" >&2
+		return 1
+	fi
+	if [ "$packaged" != "$upstream" ]; then
+		printf '%s\t%s -> %s\n' "$port" "$packaged" "$upstream"
+	fi
+}
+
+status=0
+for port do
+	check_port || status=1
+done
+exit "$status"
