@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzDsxNwOIv5eFcYwl+R/DQONJhZhILtLXOWIvNCKeUHB+ctDlxaT2s9q5bDdFUhswGbYEAWHjwL+JY/FUebfnTAg=
+SHA256 (Pkgfile) = 8b1cf961334f800537e265cf8c3dd5e8106c7632f57de466ab711ab769071c3c
+SHA256 (.footprint) = 4a15a3da804e70208c582eb83f4b6c50f8bfb444f9cbfbc89664af0eaa872a1f
+SHA256 (tg_owt-89df288dd6ba5b2ec95b3c5eaf1e7e0c3a870fc4.tar.gz) = a6bae167e9a3422ada52e88bdde898db489367de4238d8565102b9d16fa86952
+SHA256 (libyuv-04821d1e7d60845525e8db55c7bcd41ef5be9406.tar.gz) = eadc1c7276135320f42a22599f23a2f55419e1d90a3c6a4c58cd1586f7b83bff
+SHA256 (crc32c-21fc8ef30415a635e7351ffa0e5d5367943d4a94.tar.gz) = 97d404992dcab9ab6be56067a37889b0cba1ea6cabcc2bc3feeb0131ee35a340
