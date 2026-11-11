@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzCPrh3JG5Welynd27R7NpSWvTWb7GSlPAYbzgJWBqQQszrW8HQ5qb3yK3HF2h/hH7Dh64BNwIHrtFThcsMX+AQk=
+SHA256 (Pkgfile) = da5b1e027e0a22eb514e860404fac80055f0bfecb79279041a10effb9d6d358d
+SHA256 (.footprint) = f940ef958841931f7f713446813bd922476a620b568fdeb6eb5350531f82f57d
+SHA256 (xcur2png-0.7.1.tar.gz) = bc6a062fdb48615a7159ed56ef3d2011168cd8a9decaf1d8a4e316d3064132c9
