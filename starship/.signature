@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzEYAnZ6z0IqMaobQp6TC3/wgdIEnibm/moI607qRqLYNTAlZqdpUiYUv6Nz/m0fNAjFjDpux4T4X/wKwXlTVyAI=
+SHA256 (Pkgfile) = b6a1a291ff1b228dd9c7b1b3f1bd7ab79bdc4d2a892aafc876f76d743e62f43c
+SHA256 (.footprint) = c89dec286aaec00235b591d19afc0bec339bd83ed0e8d81f2790133c58665d88
+SHA256 (starship-1.27.0.tar.gz) = f1887ffa88a7ba437d2932501794047e28d03387996f7d1c364631c053cffc44
