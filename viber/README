@@ -1,0 +1,5 @@
+Requires an activated Viber account on a phone and unprivileged user namespaces.
+
+The download URL is unversioned; upstream replacements invalidate .md5sum.
+Automatic version checking is unavailable; verify the Debian control Version
+before updating.

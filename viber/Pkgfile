@@ -1,0 +1,18 @@
+# Description: Viber desktop messenger and VoIP client (binary)
+# URL: https://www.viber.com/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib brotli bzip2 dbus eudev expat fontconfig freetype gtk3 krb5 libdrm libpng libpulse libva libxkbcommon mesa nss wayland xdg-utils xorg-libice xorg-libsm xorg-libx11 xorg-libxcb xorg-libxcomposite xorg-libxdamage xorg-libxext xorg-libxfixes xorg-libxkbfile xorg-libxrandr xorg-libxscrnsaver xorg-libxtst xorg-xcb-util-image xorg-xcb-util-keysyms xorg-xcb-util-renderutil xorg-xcb-util-wm zlib zstd
+
+name=viber
+version=29.4.0.7
+release=1
+source=(https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb)
+
+build() {
+    bsdtar -xf viber.deb data.tar.xz
+    bsdtar -xf data.tar.xz -C $PKG
+    chmod -R go-w $PKG
+
+    install -d $PKG/usr/bin
+    ln -s /opt/viber/Viber $PKG/usr/bin/viber
+}
