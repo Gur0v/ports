@@ -1,0 +1,22 @@
+# Description: Count lines of code
+# URL: https://github.com/XAMPPRocky/tokei
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: rust
+
+name=tokei
+version=15.0.0
+release=1
+source=(https://github.com/XAMPPRocky/$name/archive/v$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    export CARGO_TARGET_DIR=target
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+
+    cargo fetch --locked --target $(rustc -vV | sed -n 's|host: ||p')
+    cargo build --release --frozen --features all
+
+    install -Dm755 target/release/$name $PKG/usr/bin/$name
+    install -Dm644 LICENCE-MIT $PKG/usr/share/licenses/$name/LICENSE-MIT
+    install -Dm644 LICENCE-APACHE $PKG/usr/share/licenses/$name/LICENSE-APACHE
+}
