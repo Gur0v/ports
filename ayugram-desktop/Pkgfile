@@ -1,0 +1,43 @@
+# Description: Telegram desktop client with customization and Ghost mode
+# URL: https://github.com/AyuGram/AyuGramDesktop
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: ada boost cmake eudev ffmpeg glib gobject-introspection gperf hicolor-icon-theme hunspell libjpeg-turbo lz4 minizip ninja openal openssl opus pango python3 qt6-base qt6-declarative qt6-imageformats qt6-shadertools qt6-svg rnnoise tg_owt tlottie xxhash zlib
+# Optional: qt6-wayland webkitgtk xdg-desktop-portal
+
+name=ayugram-desktop
+version=7.2.9
+release=1
+_tdlib=bc9c263e2bfee06aaab41e82db51a103376030bc
+source=(https://github.com/AyuGram/AyuGramDesktop/releases/download/v$version/AyuGramDesktop-$version-full.tar.gz
+        https://github.com/tdlib/td/archive/$_tdlib/td-$_tdlib.tar.gz)
+
+build() {
+    cmake -S td-$_tdlib -B td-build -G Ninja \
+        -D CMAKE_INSTALL_PREFIX="$SRC/td-install" \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_C_FLAGS_RELEASE="$CFLAGS" \
+        -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+        -D CMAKE_POSITION_INDEPENDENT_CODE=ON \
+        -D TD_E2E_ONLY=ON
+    cmake --build td-build
+    cmake --install td-build
+
+    cmake -S AyuGramDesktop-$version-full -B build -G Ninja \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_C_FLAGS_RELEASE="$CFLAGS -DNDEBUG" \
+        -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -DNDEBUG" \
+        -D DESKTOP_APP_USE_PACKAGED=ON \
+        -D DESKTOP_APP_DISABLE_AUTOUPDATE=ON \
+        -D DESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
+        -D DESKTOP_APP_DISABLE_QT_PLUGINS=ON \
+        -D TDESKTOP_API_ID="${MAKEPKG_AYUGRAM_API_ID:-2040}" \
+        -D TDESKTOP_API_HASH="${MAKEPKG_AYUGRAM_API_HASH:-b18441a1ff607e10a989891a5462e627}" \
+        -D tde2e_DIR="$SRC/td-install/lib/cmake/tde2e"
+    cmake --build build
+    DESTDIR=$PKG cmake --install build
+    install -Dm644 AyuGramDesktop-$version-full/LICENSE $PKG/usr/share/licenses/$name/LICENSE
+    install -Dm644 AyuGramDesktop-$version-full/LEGAL $PKG/usr/share/licenses/$name/LEGAL
+}
