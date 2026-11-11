@@ -1,0 +1,10 @@
+Uses the UKI stubs from systemd-boot. No kernel or deployment hooks are installed.
+
+Build and inspect an unsigned image:
+  ukify build --config=/dev/null --linux=/path/to/vmlinuz \
+    --initrd=/path/to/initramfs --os-release=@/etc/os-release \
+    --cmdline=@/path/to/kernel-command-line --output=/tmp/crux.efi
+  ukify inspect /tmp/crux.efi
+
+systemd-measure, systemd-keyutil and systemd-sbsign are not provided. Features
+requiring these helpers are unavailable. Signing and deployment are manual.
