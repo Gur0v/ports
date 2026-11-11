@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzFVFazayHqZjCL/sm7yF/yWh+mUrprUIef4UJyorPOl1fRJRY3GSeqVlEKEYZrunVhb+6GSdd2zRz4Ig4y1l0Ao=
+SHA256 (Pkgfile) = f90aa43d8604da50970b3d39b661657e9b6ac767a0e642cebe67841dcab26a50
+SHA256 (.footprint) = b4e58fe7571b63a45922a14f13e61e6a6ef52ab1444956dd185c58fe09757c4e
+SHA256 (tlottie-31f1b542f88e7b4be9a01e749920d857535fc715.tar.gz) = 971f7acb6d6ba3001e4487f3b32d1a6a375b75eb4ffc9ead3c0a18d2389752b9
+SHA256 (tlottie.patch) = 8ecfc916c0e9d64e4adf051fd8166d64ed8463f4dce71ff4195d73d074b8242f
