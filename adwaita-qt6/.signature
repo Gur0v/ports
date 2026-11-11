@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzONBMls5w6MOZLfebgD3thKft68SQZxwjcfXQ/3wp5XpBkkzuIbPVQv9Q3DSr8XFrSRitYVSqbrkRpZhz88D+g8=
+SHA256 (Pkgfile) = a1078fa90d3d903761e61ae3c8a54e1e426138085d49444678ed18f3eab3e644
+SHA256 (.footprint) = 3d48567d56c7e8e0080c2381b5e60e3f0a94844f85a913fe088b1d0efd47d7ab
+SHA256 (adwaita-qt-1.4.2.tar.gz) = cd5fd71c46271d70c08ad44562e57c34e787d6a8650071db115910999a335ba8
