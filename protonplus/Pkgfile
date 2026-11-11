@@ -1,0 +1,20 @@
+# Description: Compatibility tool manager for Linux gaming
+# URL: https://github.com/Vysp3r/ProtonPlus
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: appstream cairo desktop-file-utils gettext glib gtk4 json-glib libadwaita libarchive libgee libnotify libsdl3 libsoup3 meson ninja vala
+
+name=protonplus
+version=0.6.8
+release=1
+source=(https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v$version.tar.gz)
+
+build() {
+    meson setup ProtonPlus-$version build \
+        --prefix=/usr \
+        --libdir=lib \
+        --buildtype=plain \
+        --wrap-mode=nodownload
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+    rm -r $PKG/usr/share/locale
+}

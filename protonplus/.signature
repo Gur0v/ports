@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzJNj2+rhKCb3EAmEevOVK5SGzMoehyzZfhjBmdeBnKSRjQA0+LC1ecmsqvRT931CNLacV5TpJ8PvcCtMz6iKzwI=
+SHA256 (Pkgfile) = 14ad651b9e1edd88ccb027c67dcda9337bdbf4e3f915701e6f282bdfa06bde8e
+SHA256 (.footprint) = ee92fa418dc86c4f542ae06e8a88251a2c9e1adcc4c0549d8b263c34cba0b7fd
+SHA256 (v0.6.8.tar.gz) = 9635706b4649032add033fcedf6db8dcbafe20c63789523c10a4764cb08fd2c7
