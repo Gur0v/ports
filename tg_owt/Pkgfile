@@ -1,0 +1,30 @@
+# Description: WebRTC library for Telegram Desktop
+# URL: https://github.com/desktop-app/tg_owt
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: abseil-cpp cmake ffmpeg glib libdrm libjpeg-turbo libsrtp libvpx mesa ninja openh264 openssl opus pipewire python3 xorg-libxcomposite xorg-libxdamage xorg-libxext xorg-libxfixes xorg-libxrandr xorg-libxrender xorg-libxtst
+
+name=tg_owt
+version=89df288dd6
+release=1
+_commit=89df288dd6ba5b2ec95b3c5eaf1e7e0c3a870fc4
+_libyuv=04821d1e7d60845525e8db55c7bcd41ef5be9406
+_crc32c=21fc8ef30415a635e7351ffa0e5d5367943d4a94
+source=(https://github.com/desktop-app/$name/archive/$_commit/$name-$_commit.tar.gz
+        https://gitlab.com/chromiumsrc/libyuv/-/archive/$_libyuv/libyuv-$_libyuv.tar.gz
+        https://github.com/google/crc32c/archive/$_crc32c/crc32c-$_crc32c.tar.gz)
+
+build() {
+    cp -a libyuv-$_libyuv/. $name-$_commit/src/third_party/libyuv/
+    cp -a crc32c-$_crc32c/. $name-$_commit/src/third_party/crc32c/src/
+
+    cmake -S $name-$_commit -B build -G Ninja \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_C_FLAGS_RELEASE="$CFLAGS" \
+        -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+        -D CMAKE_POSITION_INDEPENDENT_CODE=ON
+    cmake --build build
+    DESTDIR=$PKG cmake --install build
+    install -Dm644 $name-$_commit/LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}
