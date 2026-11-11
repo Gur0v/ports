@@ -1,0 +1,20 @@
+# Description: Gaming library manager (binary)
+# URL: https://github.com/hydralauncher/hydra
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib at-spi2-core cups gtk3 libnotify libsecret mesa nspr nss util-linux xdg-utils xorg-libxcomposite xorg-libxdamage xorg-libxrandr xorg-libxscrnsaver xorg-libxtst
+
+name=hydra-launcher
+version=4.4.0
+release=1
+source=(https://github.com/hydralauncher/hydra/releases/download/v$version/hydralauncher_${version}_amd64.deb
+        https://raw.githubusercontent.com/hydralauncher/hydra/v$version/LICENSE)
+renames=(SKIP $name-$version-LICENSE)
+
+build() {
+    bsdtar -xf hydralauncher_${version}_amd64.deb data.tar.xz
+    bsdtar -xf data.tar.xz -C $PKG
+    chmod -R go-w $PKG
+    install -d $PKG/usr/bin
+    ln -s /opt/Hydra/hydralauncher $PKG/usr/bin/hydralauncher
+    install -Dm644 $name-$version-LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

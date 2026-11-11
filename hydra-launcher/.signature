@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzOtQsWEnvG//C0yL9EE5HJ2DikQx1nuc40QX/aRpbuMvBAyaDc1hHpfshHvFunh6nR+9kKZzxbz41exkKhjr1wQ=
+SHA256 (Pkgfile) = 7202967751533f12c4457bb05694ae5c200c6986e4187464e3f84cf5e78d16e4
+SHA256 (.footprint) = 84a1a1745e46bd11e4fef59eb4f8d7aefa92e24601fafc73291f0919169038e1
+SHA256 (hydralauncher_4.4.0_amd64.deb) = 7d27db73e8390afd05b59c2c10da56082b2287ce7a95f68c655861a500c75df6
+SHA256 (hydra-launcher-4.4.0-LICENSE) = 32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9
