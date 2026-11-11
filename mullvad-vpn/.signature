@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzLPAngOHn3WCrB12gnXjhnsOnv5GIKFxYFdROFcow5cPXejoUvbf0aXUCIeLGsvP7ExuTo78JySn0UWwAqpVXgo=
+SHA256 (Pkgfile) = 3397c66ae95083b884a7aab33adb7f80e5b376af3d7a31a946e0e625170bc9b1
+SHA256 (.footprint) = 2783dc86a3458f13ba9afc1c432b49442739966e16d907ac9ea057580cecaa2f
+SHA256 (MullvadVPN-2026.5_amd64.deb) = aa6bd00452588597f50e8ca2f02bb91e9c295c4f01b0ae907354552e7428e7ab
+SHA256 (mullvad-2026.5-LICENSE.md) = 8951bda6e616df7418ff3f80d9699f96da704df64f3bc9f0d5bb75a103680456
+SHA256 (mullvad-daemon.service) = e5115e49061bdd58bf2fe1b54407ddec616f371c6ba11abe27dd418517586430
