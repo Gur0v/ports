@@ -1,0 +1,6 @@
+Conflicts with coreutils. GNU compatibility is incomplete.
+Keep a GNU coreutils package archive available for recovery.
+
+To satisfy coreutils dependencies, add to /etc/prt-get.aliases:
+
+uutils-coreutils: coreutils
