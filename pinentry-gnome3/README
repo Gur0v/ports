@@ -1,0 +1,4 @@
+Conflicts with pinentry. Install gcr before replacing pinentry.
+Then add to /etc/prt-get.aliases:
+
+pinentry-gnome3: pinentry
