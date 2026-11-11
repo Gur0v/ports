@@ -1,0 +1,17 @@
+# Description: Hardware-accelerated screen recorder with replay support
+# URL: https://git.dec05eba.com/gpu-screen-recorder/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: dbus ffmpeg libcap libdrm libglvnd libjpeg-turbo libpulse libva meson ninja pipewire vulkan-headers wayland xorg-libx11 xorg-libxcomposite xorg-libxdamage xorg-libxfixes xorg-libxrandr
+
+name=gpu-screen-recorder
+version=5.12.3
+release=1
+source=(https://dec05eba.com/snapshot/$name.git.$version.tar.gz)
+
+build() {
+    meson setup build --prefix=/usr --libdir=lib --buildtype=release \
+        --wrap-mode=nodownload -Dsystemd=false -Dcapabilities=false \
+        -Dnvidia_suspend_fix=false
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+}

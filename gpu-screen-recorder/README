@@ -1,0 +1,13 @@
+Requires a working GPU driver and its video encoder support (VA-API on
+AMD/Intel, proprietary NVIDIA driver on NVIDIA). Portal capture also needs
+a running PipeWire session and a suitable xdg-desktop-portal backend.
+
+File capabilities are not stored by this package. Direct monitor capture
+uses pkexec when gsr-kms-server lacks CAP_SYS_ADMIN; install polkit and run
+a graphical authentication agent, or explicitly grant the capability as root:
+
+    setcap cap_sys_admin+ep /usr/bin/gsr-kms-server
+
+This is a powerful capability. Reapply it after package upgrades if used.
+The NVIDIA suspend workaround is not installed; see upstream documentation
+if recording stops working after suspend.
