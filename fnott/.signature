@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzKMVbhVQajL3OHLb/CXbFPsu/5ZgaV3eyRAJcykIUEBVl114e2O8qJq6q+xqUzXiRt6RYn+pZI1CHkSOC9kfog0=
+SHA256 (Pkgfile) = 4fa1a34f0214fed9841297a70f19c57c36cd541b5e5d7b4967ab58a8bbd36800
+SHA256 (.footprint) = 254d5520415a0fba56b9f60d96ab8e9e1325856a080e2e75634287db715a761d
+SHA256 (fnott-1.8.0.tar.gz) = 896bf281431067adf539a8e563db7ef0409877f53131af4fd6656ceda11d24db
