@@ -1,0 +1,29 @@
+# Description: A minimal, fast and customizable prompt for any shell
+# URL: https://starship.rs/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: rust
+
+name=starship
+version=1.27.0
+release=1
+source=(https://github.com/starship/starship/archive/v$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+
+    export CARGO_TARGET_DIR=target
+    export CFLAGS="$CFLAGS -ffat-lto-objects"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
+    cargo build --release --frozen
+
+    install -Dm755 target/release/$name $PKG/usr/bin/$name
+
+    for shell in bash elvish fish zsh; do
+        target/release/$name completions $shell > $name.$shell
+    done
+    install -Dm644 $name.bash $PKG/usr/share/bash-completion/completions/$name
+    install -Dm644 $name.elvish $PKG/usr/share/elvish/lib/$name.elv
+    install -Dm644 $name.fish $PKG/usr/share/fish/vendor_completions.d/$name.fish
+    install -Dm644 $name.zsh $PKG/usr/share/zsh/site-functions/_$name
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}
