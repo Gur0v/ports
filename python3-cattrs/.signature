@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzADiC2TVNdVRvxnCo8EDlVZ7hxoTekQ+jqmFTKBc9VYvqmz/eXY5hozlGZL1DpQs1cUupv+EonNhFUoA/0P6nQc=
+SHA256 (Pkgfile) = b979bc2b1422305e7e8bd9f685513a3d8c12d7b1f9854b36662d390af7bd464c
+SHA256 (.footprint) = 03ed38fa1000db1b87ab5a14c7eda938622133740eee741861e461b82c894dc4
+SHA256 (cattrs-26.2.1.tar.gz) = 679132bfdc225c5ee40c024fc42519954767c387f950dc6751946c586bccdc6d
