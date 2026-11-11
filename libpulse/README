@@ -1,0 +1,2 @@
+Conflicts with pulseaudio.
+Autospawning is disabled in /etc/pulse/client.conf.

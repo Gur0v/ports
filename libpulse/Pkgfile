@@ -1,0 +1,38 @@
+# Description: PulseAudio client libraries and utilities
+# URL: https://www.freedesktop.org/wiki/Software/PulseAudio/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: dbus glib libsndfile meson ninja p5-xml-parser
+
+name=libpulse
+version=17.0
+release=1
+source=(https://distributions.freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz)
+
+build() {
+    meson setup pulseaudio-$version build \
+        --prefix=/usr \
+        --libdir=/usr/lib \
+        --sysconfdir=/etc \
+        --buildtype=plain \
+        --wrap-mode nodownload \
+        --auto-features disabled \
+        -D b_lto=true \
+        -D b_pie=true \
+        -D daemon=false \
+        -D dbus=enabled \
+        -D glib=enabled \
+        -D oss-output=enabled \
+        -D man=true \
+        -D doxygen=false \
+        -D tests=false \
+        -D bashcompletiondir=/usr/share/bash-completion/completions \
+        -D zshcompletiondir=/usr/share/zsh/site-functions
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+
+    sed -i 's/^; autospawn = yes$/autospawn = no/' $PKG/etc/pulse/client.conf
+    install -d $PKG/etc/pulse/client.conf.d
+
+    rm -r $PKG/usr/share/locale
+    rm $PKG/usr/bin/pa-info
+}
