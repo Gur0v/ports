@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzPM9gojZLrcP8yVKsyUlFdIg+nd8F1WyGAb0YkQ2JWiLtS9IAzyJJ3CIPbaQZc3OrPX3Yt6/Rl5S9YLHal6WUQs=
+SHA256 (Pkgfile) = 1124b682032d408824c2fbf8d39e2e436b0d38c2633f40007463e028214ac97c
+SHA256 (.footprint) = 12f9e22a1a7567da1abd950b1aa7b10c2c650407e9cdb2538da1a85711b5a711
+SHA256 (mkinitcpio-v42.2.tar.gz) = f7093d1862b7bb90d42de9309562070ffab1cd40d20c7a4e1f469a063707c891
+SHA256 (crux.patch) = f85e251c657bd38e94bfccdd79d2b936a6489ee5c6709cd0b10a2c8d6f01d802
