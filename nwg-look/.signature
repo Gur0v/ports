@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzHkXKctiHjuSzf0/a11c3LHOekLHOLQu+kZF6BoBIx1wXN5NM3X7cA8+x+77S5Wb2qs4x0BA/r2bPp3SmZHLCgs=
+SHA256 (Pkgfile) = ba277fff6bc6bcf5b438dfea46a3b7bf0a70c59ed4c61a01cf33d11f3aa2678f
+SHA256 (.footprint) = 4e41fe178f3583f66f8783520cc2e7d2cc6745ec8d9a8fcd9392b4a65c1e00ed
+SHA256 (nwg-look-1.2.1.tar.gz) = 1c66053f559f1756b18b615987a450433117c6b6c08759debdef94b6fd906480
