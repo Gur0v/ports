@@ -1,0 +1,24 @@
+# Description: YouTube Music desktop application with custom plugins (binary)
+# URL: https://github.com/pear-devs/pear-desktop
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib cups eudev expat gtk3 hicolor-icon-theme libdrm libnotify libpulse libsecret libxkbcommon mesa nss xdg-utils xorg-libxcb xorg-libxcomposite xorg-libxdamage xorg-libxfixes xorg-libxrandr xorg-libxscrnsaver xorg-libxtst
+
+name=pear-desktop
+version=3.12.0
+release=1
+source=(https://github.com/pear-devs/$name/releases/download/v$version/youtube-music_${version}_amd64.deb
+        https://raw.githubusercontent.com/pear-devs/$name/v$version/license)
+renames=(SKIP $name-$version-license)
+
+build() {
+    bsdtar -xf youtube-music_${version}_amd64.deb data.tar.xz
+    bsdtar -xf data.tar.xz -C $PKG
+
+    install -d $PKG/usr/bin
+    ln -s "/opt/YouTube Music/youtube-music" $PKG/usr/bin/$name
+    sed -i "s|^Exec=.*|Exec=$name %U|" \
+        $PKG/usr/share/applications/com.github.th-ch.youtube-music.desktop
+    install -Dm644 $name-$version-license $PKG/usr/share/licenses/$name/LICENSE
+
+    rm -r $PKG/usr/share/doc
+}

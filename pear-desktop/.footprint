@@ -1,0 +1,156 @@
+drwxr-xr-x	root/root	opt/
+drwxr-xr-x	root/root	opt/YouTube Music/
+-rwxr-xr-x	root/root	opt/YouTube Music/youtube-music
+-rw-r--r--	root/root	opt/YouTube Music/LICENSE.electron.txt
+-rwxr-xr-x	root/root	opt/YouTube Music/libffmpeg.so
+-rwxr-xr-x	root/root	opt/YouTube Music/chrome_crashpad_handler
+-rwxr-xr-x	root/root	opt/YouTube Music/libGLESv2.so
+-rw-r--r--	root/root	opt/YouTube Music/icudtl.dat
+-rwxr-xr-x	root/root	opt/YouTube Music/libEGL.so
+drwxr-xr-x	root/root	opt/YouTube Music/locales/
+-rw-r--r--	root/root	opt/YouTube Music/vk_swiftshader_icd.json
+-rwxr-xr-x	root/root	opt/YouTube Music/libvk_swiftshader.so
+-rwxr-xr-x	root/root	opt/YouTube Music/libvulkan.so.1
+-rw-r--r--	root/root	opt/YouTube Music/chrome_200_percent.pak
+-rw-r--r--	root/root	opt/YouTube Music/snapshot_blob.bin
+-rw-r--r--	root/root	opt/YouTube Music/LICENSES.chromium.html
+-rw-r--r--	root/root	opt/YouTube Music/resources.pak
+-rw-r--r--	root/root	opt/YouTube Music/chrome_100_percent.pak
+-rw-r--r--	root/root	opt/YouTube Music/v8_context_snapshot.bin
+drwxr-xr-x	root/root	opt/YouTube Music/resources/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar
+-rw-r--r--	root/root	opt/YouTube Music/resources/apparmor-profile
+-rw-r--r--	root/root	opt/YouTube Music/resources/package-type
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app-update.yml
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/tray-paused.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/tray-white.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/mdui.css
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/tray-paused-white.png
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/icon.svg
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-white/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/icon.png
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-black/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/error.html
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/tray.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-black/play.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-black/pause.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-black/previous.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-black/next.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-white/play.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-white/pause.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-white/previous.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/media-icons-white/next.png
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/mac/
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/win/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/win/icon.ico
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/mac/icon.icon/
+drwxr-xr-x	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/mac/icon.icon/Assets/
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/mac/icon.icon/icon.json
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/mac/icon.icon/Assets/SVG Image.svg
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/1024x1024.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/24x24.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/128x128.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/16x16.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/512x512.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/48x48.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/64x64.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/256x256.png
+-rw-r--r--	root/root	opt/YouTube Music/resources/app.asar.unpacked/assets/generated/icons/png/32x32.png
+-rw-r--r--	root/root	opt/YouTube Music/locales/lv.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/fa.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ro.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/bn.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/sl.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ko.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ar.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/en-US.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/cs.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/gu.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/am.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/mr.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/lt.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ta.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/fil.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/es-419.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/id.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/zh-CN.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/kn.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ja.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/pl.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/sv.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/fr.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/tr.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ca.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ml.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/pt-BR.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/vi.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/bg.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ms.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/hr.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/th.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/da.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/zh-TW.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/fi.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/sk.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ru.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/es.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/sw.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/hu.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/te.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/nl.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/he.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/it.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/af.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/sr.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/de.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/uk.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/ur.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/hi.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/en-GB.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/et.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/el.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/nb.pak
+-rw-r--r--	root/root	opt/YouTube Music/locales/pt-PT.pak
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/licenses/
+drwxr-xr-x	root/root	usr/share/applications/
+drwxr-xr-x	root/root	usr/share/icons/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/24x24/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/64x64/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/128x128/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/256x256/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/48x48/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/1024x1024/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/512x512/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/512x512/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/512x512/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/1024x1024/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/1024x1024/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/48x48/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/48x48/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/256x256/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/256x256/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/16x16/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/128x128/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/128x128/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/64x64/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/64x64/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/24x24/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/24x24/apps/youtube-music.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/32x32/apps/youtube-music.png
+-rw-r--r--	root/root	usr/share/applications/com.github.th-ch.youtube-music.desktop
+drwxr-xr-x	root/root	usr/share/licenses/pear-desktop/
+-rw-r--r--	root/root	usr/share/licenses/pear-desktop/LICENSE
+lrwxrwxrwx	root/root	usr/bin/pear-desktop -> /opt/YouTube Music/youtube-music
