@@ -41,7 +41,7 @@ recipe_value()
 check_port()
 {
 	case "$port" in
-		tg_owt|tlottie) return 0 ;;
+		tg_owt|tlottie|viber) return 0 ;;
 	esac
 	packaged=$(recipe_value version) || return 1
 	if [ "$port" = qt6-webengine-bin ]; then
