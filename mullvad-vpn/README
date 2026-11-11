@@ -1,0 +1,15 @@
+Add mullvad-daemon after dbus in the SERVICES array in /etc/rc.conf.
+The GUI requires the daemon to be running.
+
+/opt/Mullvad VPN/chrome-sandbox and /usr/bin/mullvad-exclude are installed
+setuid root. Split tunneling requires cgroups.
+
+Stopping the daemon may leave the firewall blocking traffic. To remove these
+rules after stopping it, run as root:
+
+"/opt/Mullvad VPN/resources/mullvad-setup" reset-firewall
+
+Early-boot blocking is not enabled by this port. For protection before networking,
+run after local filesystems are mounted and before network services:
+
+/usr/bin/mullvad-daemon --initialize-early-boot-firewall

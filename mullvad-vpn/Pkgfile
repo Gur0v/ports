@@ -1,0 +1,34 @@
+# Description: Mullvad VPN client (binary)
+# URL: https://mullvad.net/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib cups dbus eudev expat gtk3 hicolor-icon-theme iputils libdrm libnftnl libnotify libpulse libxkbcommon mesa nss xdg-utils xorg-libxcb xorg-libxcomposite xorg-libxdamage xorg-libxfixes xorg-libxrandr
+# Optional: libayatana-appindicator
+
+name=mullvad-vpn
+version=2026.5
+release=1
+source=(https://github.com/mullvad/mullvadvpn-app/releases/download/$version/MullvadVPN-${version}_amd64.deb
+        https://raw.githubusercontent.com/mullvad/mullvadvpn-app/$version/LICENSE.md
+        mullvad-daemon.service)
+renames=(SKIP mullvad-$version-LICENSE.md SKIP)
+
+build() {
+    bsdtar -xf MullvadVPN-${version}_amd64.deb data.tar.xz
+    mkdir payload
+    bsdtar -xf data.tar.xz -C payload
+
+    install -d $PKG/opt $PKG/usr/share
+    cp -a "payload/opt/Mullvad VPN" $PKG/opt/
+    cp -a payload/usr/bin $PKG/usr/
+    cp -a payload/usr/share/{applications,bash-completion,fish,icons} $PKG/usr/share/
+    cp -a payload/usr/local/share/zsh $PKG/usr/share/
+    rm "$PKG/opt/Mullvad VPN/mullvad-vpn" \
+        "$PKG/opt/Mullvad VPN/resources/CHANGELOG.md"
+    chmod 4711 "$PKG/opt/Mullvad VPN/chrome-sandbox"
+    chmod 4755 $PKG/usr/bin/mullvad-exclude
+    ln -s "/opt/Mullvad VPN/mullvad-gui" $PKG/usr/bin/$name
+    sed -i "s|^Exec=.*|Exec=$name %U|" \
+        $PKG/usr/share/applications/$name.desktop
+    install -Dm755 $SRC/mullvad-daemon.service $PKG/etc/rc.d/mullvad-daemon
+    install -Dm644 mullvad-$version-LICENSE.md $PKG/usr/share/licenses/$name/LICENSE
+}

@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# /etc/rc.d/mullvad-daemon: start/stop Mullvad VPN
+#
+
+SSD=/sbin/start-stop-daemon
+PROG=/usr/bin/mullvad-daemon
+export MULLVAD_RESOURCE_DIR="/opt/Mullvad VPN/resources"
+
+case $1 in
+    start)
+        $SSD --start --background --exec $PROG
+        ;;
+    stop)
+        $SSD --stop --oknodo --retry TERM/30 --exec $PROG
+        ;;
+    restart)
+        $SSD --stop --oknodo --retry USR1/30 --exec $PROG && $0 start
+        ;;
+    status)
+        $SSD --status --exec $PROG
+        status=$?
+        case $status in
+            0) echo "$PROG is running with pid $(pidof $PROG)" ;;
+            3) echo "$PROG is not running" ;;
+            *) echo "Unable to determine the program status" ;;
+        esac
+        exit $status
+        ;;
+    *)
+        echo "usage: $0 [start|stop|restart|status]"
+        exit 1
+        ;;
+esac
