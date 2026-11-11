@@ -1,0 +1,8 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/initcpio/
+-rwxr-xr-x	root/root	usr/lib/initcpio/busybox
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/licenses/
+drwxr-xr-x	root/root	usr/share/licenses/mkinitcpio-busybox/
+-rw-r--r--	root/root	usr/share/licenses/mkinitcpio-busybox/LICENSE

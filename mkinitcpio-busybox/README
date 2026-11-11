@@ -1,0 +1,6 @@
+Notes
+-----
+Dedicated initramfs BusyBox using the Arch mkinitcpio-busybox x86-64 config.
+Installs /usr/lib/initcpio/busybox without host applet links or replacing sh.
+mkinitcpio adds applet links and separate util-linux/kmod binaries to images.
+Review Arch configuration and security fixes before updating BusyBox.

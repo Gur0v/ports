@@ -1,0 +1,19 @@
+# Description: Dedicated initramfs BusyBox with Arch mkinitcpio applets
+# URL: https://busybox.net/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: libxcrypt
+
+name=mkinitcpio-busybox
+version=1.36.1
+release=1
+source=(https://busybox.net/downloads/busybox-$version.tar.bz2 config)
+
+build() {
+    cd busybox-$version
+    cp $SRC/config .config
+    export KCONFIG_NOTIMESTAMP=1
+    make oldconfig < /dev/null
+    make -j2
+    install -Dm755 busybox $PKG/usr/lib/initcpio/busybox
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}
