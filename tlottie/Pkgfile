@@ -1,0 +1,24 @@
+# Description: Lottie animation renderer with a C API
+# URL: https://github.com/dkaraush/tlottie
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: rust
+
+name=tlottie
+version=31f1b542f8
+release=1
+_commit=31f1b542f88e7b4be9a01e749920d857535fc715
+source=(https://github.com/dkaraush/$name/archive/$_commit/$name-$_commit.tar.gz
+        tlottie.patch)
+
+build() {
+    cd $name-$_commit
+    patch -p1 < $SRC/tlottie.patch
+    export CARGO_HOME="$SRC/cargo-home"
+    export CARGO_TARGET_DIR="$SRC/target"
+    cargo rustc --lib --release --locked \
+        --features c-api --crate-type staticlib \
+        -- --print native-static-libs
+    install -Dm644 $CARGO_TARGET_DIR/release/libtlottie.a $PKG/usr/lib/libtlottie.a
+    install -Dm644 include/tlottie.h $PKG/usr/include/tlottie/tlottie.h
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}
