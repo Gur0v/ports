@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzJU/uB+UcW6DFn1fgxyWxjK0kzV8aBP3YcWWRdbb6AgA8uwV0jtJf0Ku+qGraMln/HLgg48z/wee1Znqxo1NCQ8=
+SHA256 (Pkgfile) = 13aed40185771b06ab90c8e3a136aeb4a29c1ec03a6891363d719c36f71f0c57
+SHA256 (.footprint) = ceb1ad465499510572e75076c29700c7e7668d5b3cb961fd8dd3d3c5cb028b27
+SHA256 (busybox-1.36.1.tar.bz2) = b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314
+SHA256 (config) = f1a67ecda5b73a50e49953efaaa0be582e4b707cf5a6270519e28ee022098518
