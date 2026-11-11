@@ -1,0 +1,18 @@
+# Description: Convert X cursors to PNG images
+# URL: https://github.com/eworm-de/xcur2png
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: libpng xorg-libxcursor
+
+name=xcur2png
+version=0.7.1
+release=1
+source=(https://github.com/eworm-de/$name/releases/download/$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+
+    sed -i 's/extern dry_run;/extern int dry_run;/' xcur2png.c
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}
