@@ -1,0 +1,16 @@
+# Description: Overlay notifications for GPU Screen Recorder
+# URL: https://git.dec05eba.com/gpu-screen-recorder-notification/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: libglvnd meson ninja wayland xorg-libx11 xorg-libxext xorg-libxrandr xorg-libxrender
+
+name=gpu-screen-recorder-notification
+version=1.1.0
+release=1
+source=(https://dec05eba.com/snapshot/$name.git.$version.tar.gz)
+
+build() {
+    meson setup build --prefix=/usr --libdir=lib --buildtype=release \
+        --wrap-mode=nodownload
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+}

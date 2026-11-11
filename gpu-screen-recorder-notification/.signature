@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzHsAEy4HxPg/cK1f6jEmqwW+5muhwHq0AVuWR6u3Aetw4GCGkyEWhf3dDtDDWie7V6ibGnldw2ujFU+6BClTBgQ=
+SHA256 (Pkgfile) = 980c157f7d74239495dadf283bb42ea6edee2b6916f50dcc226b919473f0ab51
+SHA256 (.footprint) = edf09614f469c888c4474f712ec8f9a7f41cc574d956d3dd4da571661a1f2be0
+SHA256 (gpu-screen-recorder-notification.git.1.1.0.tar.gz) = b9a0fe28a9e05255b2bfbd44b99a7430d67c03b6caa9c3a18370d2a633cadabc

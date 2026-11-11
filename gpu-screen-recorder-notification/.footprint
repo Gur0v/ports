@@ -1,0 +1,12 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/gsr-notify
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/gsr-notify/
+drwxr-xr-x	root/root	usr/share/gsr-notify/fonts/
+-rw-r--r--	root/root	usr/share/gsr-notify/fonts/NotoSans-Bold.ttf
+drwxr-xr-x	root/root	usr/share/gsr-notify/images/
+-rw-r--r--	root/root	usr/share/gsr-notify/images/record.png
+-rw-r--r--	root/root	usr/share/gsr-notify/images/replay.png
+-rw-r--r--	root/root	usr/share/gsr-notify/images/screenshot.png
+-rw-r--r--	root/root	usr/share/gsr-notify/images/stream.png
