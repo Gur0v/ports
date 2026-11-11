@@ -1,0 +1,8 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzDRKogAOlyDc3P7fyQk9NMLc1Tl+MziGZZAABypCylAdTmBu86F1zHaIuw4HRgnrb2wjOIz42Kd+TUlAF5tVdQI=
+SHA256 (Pkgfile) = 1c05ed4b1b225a02297821d107897c98047da8f769e9dca0624577506e531566
+SHA256 (.footprint) = f6b90eefe45ec6902933def00c0482cfc4375ee090fe0ecbff12f1a63f12be78
+SHA256 (systemd-262.2.tar.gz) = 116432ee9dce9bfef4c7da7963c6de41899ab44197f2876ee99545707a5c7c1f
+SHA256 (standalone.meson) = 33045b4874e3292d23f19495b6f061fcc25761964336a03f95c9205af353c020
+SHA256 (efi-only.patch) = 582c9809fc00f247b1556842fe8ab0544bc77effe392cfe025e5243b53863f68
+SHA256 (bootctl-no-rpath.patch) = 924b1bf79419f33b883fe520b031401c42658ce132cea0525d6ae4e400434c31
