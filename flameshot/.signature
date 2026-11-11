@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzASU2i3adOtpCwfsNrUwNdTnafd5AZDBByh1cNvwICblepmgGzGjtZOh6uVYRch8+K6u8ELIKocZHCvbRkEAOAI=
+SHA256 (Pkgfile) = 50a12cb657e6c0dd4538070a2a41e6e24d06ea3740543525aed4357382c1ed35
+SHA256 (.footprint) = 003b46248ed85a8f68c9e2c16602b9e45aa7862656c1e8675ef8c578618160d8
+SHA256 (flameshot-15.0.0.tar.gz) = 9e38bb699a152873e9ccc4b9a54b06baa16762298444aff8c72f218a7741e146
+SHA256 (Qt-Color-Widgets-5d52e907e50dc88cf969b41cea44665ff6c475b1.tar.gz) = 99edd39dca0367b1cfd388bf031c4915137580bd73f87c65f7720b8a4af14efa
