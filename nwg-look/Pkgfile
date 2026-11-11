@@ -1,0 +1,22 @@
+# Description: GTK3 settings editor for Wayland
+# URL: https://github.com/nwg-piotr/nwg-look
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: dconf go gsettings-desktop-schemas gtk3 xcur2png
+# Optional: libcanberra
+
+name=nwg-look
+version=1.2.1
+release=1
+source=(https://github.com/nwg-piotr/$name/archive/v$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+
+    export GOCACHE=$SRC/go-build
+    export GOMODCACHE=$SRC/go-mod
+    go build -p 2 -trimpath -buildmode=pie -mod=readonly -modcacherw \
+        -ldflags "-linkmode external -extldflags '$LDFLAGS'" -o bin/nwg-look .
+    make DESTDIR=$PKG install
+
+    rm -r $PKG/usr/share/doc
+}
