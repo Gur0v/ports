@@ -1,0 +1,7 @@
+Conflicts with qt6-webengine. Requires Qt 6.12.0 with Vulkan support.
+Install vulkan-headers before rebuilding qt6-base if Vulkan support is disabled.
+Proprietary codecs and QtPdf are not included.
+
+To satisfy qt6-webengine dependencies, add to /etc/prt-get.aliases:
+
+qt6-webengine-bin: qt6-webengine

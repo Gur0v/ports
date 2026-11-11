@@ -1,0 +1,35 @@
+# Description: Qt6 WebEngine libraries and development files (binary)
+# URL: https://www.qt.io/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib eudev expat fontconfig freetype libpulse libxkbcommon mesa nss qt6-positioning qt6-tools qt6-webchannel xorg-libxcb xorg-libxcomposite xorg-libxdamage xorg-libxfixes xorg-libxkbfile xorg-libxrandr xorg-libxtst
+
+name=qt6-webengine-bin
+version=6.12.0
+release=1
+_build=0-202607081027
+_url=https://download.qt.io/online/qtsdkrepository/linux_x64/extensions/qtwebengine/${version//./}/x86_64/extensions.qtwebengine.${version//./}.linux_gcc_64
+source=($_url/$version-${_build}qtwebengine-Linux-RHEL_9_6-GCC-Linux-RHEL_9_6-X86_64.7z)
+renames=($name-$version-$_build.7z)
+
+build() {
+    install -d $PKG/usr/{include/qt6,lib/qt6,share/qt6}
+    cp -a include/. $PKG/usr/include/qt6/
+    cp -a lib/. $PKG/usr/lib/
+    cp -a libexec/QtWebEngineProcess libexec/qwebengine_convert_dict \
+        $PKG/usr/lib/qt6/
+    cp -a metatypes mkspecs modules plugins qml sbom $PKG/usr/lib/qt6/
+    cp -a resources translations $PKG/usr/share/qt6/
+
+    find $PKG/usr/lib/cmake -name '*.cmake' -exec sed -i \
+        -e 's|/include|/include/qt6|g' \
+        -e 's|/libexec/|/lib/qt6/|g' \
+        -e 's|/\./metatypes/|/lib/qt6/metatypes/|g' \
+        -e 's|/plugins/|/lib/qt6/plugins/|g' \
+        -e 's|/qml/|/lib/qt6/qml/|g' \
+        -e 's|"qml/|"lib/qt6/qml/|g' {} +
+    sed -i -e 's|^prefix=.*|prefix=/usr|' \
+        -e 's|^includedir=.*|includedir=${prefix}/include/qt6|' \
+        -e 's|^bindir=.*|bindir=${prefix}/lib/qt6/bin|' \
+        -e 's|^libexecdir=.*|libexecdir=${prefix}/lib/qt6|' \
+        $PKG/usr/lib/pkgconfig/*.pc
+}
