@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzEHZQ0Pyz7Qxr1hxbBMtUcG5kPQ+bt5B+lkqfPqXjdAF+n5DdFBspaaQdhjjbxzX7oYUndFzgVy2UKJtHulg+QA=
+SHA256 (Pkgfile) = 4438f974304bd0bc49b2fafa3d9ed68f9c5a862153fd98d9f83e55981e70d46f
+SHA256 (.footprint) = a251e1978dd1d34b2d67e22799d564952e1d5827effd6b45e3d155be4ddfd29f
+SHA256 (ente-auth-v4.4.26-x86_64.deb) = 9952ad4c7d9d4774b52df0de53eda4959e4a4662d63ab9eb64aa168013bc3369
+SHA256 (ente-auth-4.4.26-LICENSE) = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0

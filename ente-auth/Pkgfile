@@ -1,0 +1,24 @@
+# Description: Ente two-factor authenticator (binary)
+# URL: https://ente.io/auth
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: curl gtk3 libayatana-appindicator libsecret polkit xdg-user-dirs
+
+name=ente-auth
+version=4.4.26
+release=1
+source=(https://github.com/ente/ente/releases/download/auth-v$version/$name-v$version-x86_64.deb
+        https://raw.githubusercontent.com/ente/ente/auth-v$version/LICENSE)
+renames=(SKIP $name-$version-LICENSE)
+
+build() {
+    bsdtar -xf $name-v$version-x86_64.deb data.tar.zst
+    mkdir payload
+    bsdtar -xf data.tar.zst -C payload
+    install -d $PKG/usr
+    cp -a payload/usr/share $PKG/usr/
+    install -d $PKG/usr/bin $PKG/usr/share/polkit-1/actions
+    ln -s /usr/share/enteauth/enteauth $PKG/usr/bin/enteauth
+    ln -s /usr/share/enteauth/data/flutter_assets/assets/polkit/com.ente.auth.policy \
+        $PKG/usr/share/polkit-1/actions/com.ente.auth.policy
+    install -Dm644 $name-$version-LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

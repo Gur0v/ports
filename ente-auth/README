@@ -1,0 +1,2 @@
+Requires a running Secret Service provider, such as gnome-keyring, for secure storage.
+Screen locking requires a running polkit authentication agent.
