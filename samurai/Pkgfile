@@ -1,0 +1,15 @@
+# Description: Ninja-compatible build tool written in C
+# URL: https://github.com/michaelforney/samurai
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+
+name=samurai
+version=1.3
+release=1
+source=(https://github.com/michaelforney/$name/archive/$version/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    make CC="${CC:-cc}" CFLAGS="$CFLAGS" samu
+    make PREFIX=/usr DESTDIR=$PKG install
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}
