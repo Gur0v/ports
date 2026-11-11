@@ -1,0 +1,22 @@
+# Description: Bubblewrap-based application sandbox with a Qt configuration GUI
+# URL: https://github.com/igo95862/bubblejail
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: bubblewrap desktop-file-utils libnotify libseccomp meson ninja python3-cattrs python3-jinja2 python3-pyqt6 python3-pyxdg python3-tomli-w scdoc xdg-dbus-proxy
+
+name=bubblejail
+version=0.10.4
+release=1
+source=(https://github.com/igo95862/$name/releases/download/$version/$name-$version.tar.xz)
+
+build() {
+    meson setup $name-$version build \
+        --prefix=/usr \
+        --libdir=lib \
+        --sysconfdir=/etc \
+        --buildtype=plain \
+        --wrap-mode=nodownload \
+        -D use-vendored-python-lxns=enabled \
+        -D python.bytecompile=-1
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
+}

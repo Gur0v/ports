@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/ports.pub
+RWQkZCjK0V/SzI93yen6A4lftc4FWSkljNIXAOE3Tl79lkVO/AA5gek0C5BCzPmY/qdPOB8YeqhS+ReI52qGQV4jxKDE9I3vqww=
+SHA256 (Pkgfile) = c9c6eb62c73f02037e2b56461beaa8ab5519e296d928f977d15b029523eab875
+SHA256 (.footprint) = 73a6266b9d19a89db21348e83c045c660bdd202542893947ccb415ae4578c22c
+SHA256 (bubblejail-0.10.4.tar.xz) = 93c4c3f64253d972e29adf707f6e31a849e18fc7639d6e6fcad60dab232b5f6a

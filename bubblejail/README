@@ -1,0 +1,2 @@
+Requires unprivileged user namespaces and a running user D-Bus session.
+The slirp4netns service additionally requires slirp4netns.
