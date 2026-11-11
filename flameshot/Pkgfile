@@ -1,0 +1,30 @@
+# Description: Screenshot tool with drawing and annotation tools
+# URL: https://github.com/flameshot-org/flameshot
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: cmake hicolor-icon-theme kguiaddons ninja qt6-base qt6-svg qt6-tools
+# Optional: grim qt6-imageformats xdg-desktop-portal
+
+name=flameshot
+version=15.0.0
+release=1
+_qtcolorwidgets=5d52e907e50dc88cf969b41cea44665ff6c475b1
+source=(https://github.com/flameshot-org/$name/archive/refs/tags/v$version/$name-$version.tar.gz
+        https://gitlab.com/mattbas/Qt-Color-Widgets/-/archive/$_qtcolorwidgets/Qt-Color-Widgets-$_qtcolorwidgets.tar.gz)
+
+build() {
+    mkdir -p $name-$version/external
+    mv Qt-Color-Widgets-$_qtcolorwidgets $name-$version/external/Qt-Color-Widgets
+
+    cmake -S $name-$version -B build -G Ninja \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+        -D FETCHCONTENT_FULLY_DISCONNECTED=ON \
+        -D USE_WAYLAND_CLIPBOARD=ON \
+        -D DISABLE_UPDATE_CHECKER=ON \
+        -D USE_KDSINGLEAPPLICATION=OFF \
+        -D QTCOLORWIDGETS_DESIGNER_PLUGIN=OFF
+    cmake --build build
+    DESTDIR=$PKG cmake --install build
+}
