@@ -1,0 +1,26 @@
+# Description: Security-focused Chromium browser (binary)
+# URL: https://github.com/secureblue/Trivalent
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: alsa-lib at-spi2-core bubblewrap cairo cups dbus eudev expat glib gtk3 libffi libpulse libva libxkbcommon mesa nspr nss pango pipewire vulkan-loader xdg-utils xorg-libx11 xorg-libxcb xorg-libxcomposite xorg-libxdamage xorg-libxext xorg-libxfixes xorg-libxrandr
+
+name=trivalent
+version=157.0.8103.78-448613
+release=1
+source=(https://repo.secureblue.dev/Packages/$name-$version.x86_64.rpm)
+
+build() {
+    cp -a etc usr $PKG/
+    install -d $PKG/usr/lib
+    mv $PKG/usr/lib64/trivalent $PKG/usr/lib/
+    rmdir $PKG/usr/lib64
+    ln -sf ../lib/trivalent/trivalent.sh $PKG/usr/bin/trivalent
+    sed -i '1s|^#!/usr/bin/bash|#!/bin/bash|' \
+        $PKG/usr/lib/trivalent/trivalent.sh
+    sed -i 's|/usr/lib64/|/usr/lib/|g' \
+        $PKG/usr/lib/trivalent/trivalent.sh \
+        $PKG/etc/trivalent/trivalent.conf
+    sed -i 's|"${XDG_SESSION_TYPE}"|"${XDG_SESSION_TYPE:-}"|' \
+        $PKG/etc/trivalent/trivalent.conf
+
+    rm -r $PKG/usr/share/user-tmpfiles.d
+}

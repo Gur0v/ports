@@ -1,0 +1,3 @@
+Requires glibc 2.43 or newer and unprivileged user namespaces.
+Set XDG_SESSION_TYPE to x11 or wayland for automatic backend selection.
+Subresource filter lists are not included.
