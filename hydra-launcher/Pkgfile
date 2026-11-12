@@ -4,7 +4,7 @@
 # Depends on: alsa-lib at-spi2-core cups gtk3 libnotify libsecret mesa nspr nss util-linux xdg-utils xorg-libxcomposite xorg-libxdamage xorg-libxrandr xorg-libxscrnsaver xorg-libxtst
 
 name=hydra-launcher
-version=4.4.0
+version=4.4.1
 release=1
 source=(https://github.com/hydralauncher/hydra/releases/download/v$version/hydralauncher_${version}_amd64.deb
         https://raw.githubusercontent.com/hydralauncher/hydra/v$version/LICENSE)
