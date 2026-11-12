@@ -1,0 +1,6 @@
+ffd59b0f7c8b5d66cdc3a5f33fa50e57  glibc-2.39-fhs-1.patch
+8a12f231516c5fa5be6036032a4b2ff8  glibc-2.44-cxxflags.patch
+8159da4a414e5efe46ecf24dd37e6c44  glibc-2.44-upstream-fixes.patch
+7677da43ef759c68e005f5d4c37986a6  glibc-2.44.tar.xz
+a8f4549c716cd37244fbf1ed059497f8  lib32.conf
+98fab2a81b48c92490692e3dd6f71995  linux-6.6.119.tar.xz

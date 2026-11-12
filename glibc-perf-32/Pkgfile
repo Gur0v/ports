@@ -1,0 +1,114 @@
+# Description: The C library used in the GNU system
+# URL: https://www.gnu.org/software/libc/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: glibc-perf gcc binutils make gawk bison python3 texinfo
+
+name=glibc-perf-32
+version=2.44
+release=1
+_srcdir=glibc-$version
+_kernel_version=6.6.119
+
+source=(https://ftp.gnu.org/gnu/glibc/$_srcdir.tar.xz
+    https://www.kernel.org/pub/linux/kernel/v6.x/linux-$_kernel_version.tar.xz
+    glibc-2.39-fhs-1.patch
+    glibc-2.44-upstream-fixes.patch
+    glibc-2.44-cxxflags.patch
+    lib32.conf)
+
+build() {
+    local flag target arch compiler options fortify=3 fortify_option
+    local -a flags
+    export CFLAGS="${CFLAGS-}"
+    export CXXFLAGS="${CXXFLAGS-$CFLAGS}"
+
+    for compiler in CC CXX; do
+        [ "${!compiler+x}" != x ] || continue
+        target= arch=
+        options=$CFLAGS
+        if [ "$compiler" = CXX ]; then
+            case "$CXXFLAGS" in
+                "$CFLAGS"*) options=$CXXFLAGS ;;
+                *) options+=" $CXXFLAGS" ;;
+            esac
+        fi
+        read -r -d '' -a flags < <(printf '%s\0' "$options")
+        for flag in "${flags[@]}"; do
+            case "$flag" in
+                -march=*|-mcpu=*) target+=" $flag"; arch=yes ;;
+                -m*) target+=" $flag" ;;
+            esac
+        done
+        [ -n "$arch" ] || target=" -march=native$target"
+        if [ "$compiler" = CC ]; then
+            CC="gcc$target"
+        else
+            CXX="g++$target"
+        fi
+    done
+    export CC="$CC -m32 -mstackrealign"
+    export CXX="$CXX -m32 -mstackrealign"
+    export CFLAGS="${CFLAGS:+$CFLAGS }-m32 -mstackrealign -O3"
+    export CXXFLAGS="${CXXFLAGS:+$CXXFLAGS }-m32 -mstackrealign -O3"
+
+    read -r -d '' -a flags < <(printf '%s\0' "$CFLAGS")
+    for flag in "${flags[@]}"; do
+        case "$flag" in
+            -D_FORTIFY_SOURCE) fortify=1 ;;
+            -D_FORTIFY_SOURCE=1|-D_FORTIFY_SOURCE=2|-D_FORTIFY_SOURCE=3)
+                fortify=${flag##*=} ;;
+            -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=0) fortify=0 ;;
+        esac
+    done
+    read -r -d '' -a flags < <(printf '%s\0' "${CPPFLAGS-}")
+    for flag in "${flags[@]}"; do
+        case "$flag" in
+            -D_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*)
+                echo 'Set _FORTIFY_SOURCE in CFLAGS, not CPPFLAGS, for glibc.' >&2
+                return 1 ;;
+        esac
+    done
+    fortify=${GLIBC_FORTIFY-$fortify}
+    case "$fortify" in
+        0) fortify_option=--disable-fortify-source ;;
+        1|2|3) fortify_option="--enable-fortify-source=$fortify" ;;
+        *) echo 'GLIBC_FORTIFY must be 0, 1, 2 or 3.' >&2; return 1 ;;
+    esac
+
+    make -C "$SRC/linux-$_kernel_version" mrproper
+    make -C "$SRC/linux-$_kernel_version" INSTALL_HDR_PATH="$PKG/usr" headers_install
+    chown root:root "$PKG/usr"
+
+    patch -p1 -d "$SRC/$_srcdir" -i "$SRC/glibc-2.39-fhs-1.patch"
+    patch -p1 -d "$SRC/$_srcdir" -i "$SRC/glibc-2.44-upstream-fixes.patch"
+    patch -p1 -d "$SRC/$_srcdir" -i "$SRC/glibc-2.44-cxxflags.patch"
+
+    mkdir "$SRC/build"
+    cd "$SRC/build"
+
+    export libc_cv_slibdir=/lib32
+    "$SRC/$_srcdir/configure" \
+        --prefix=/usr \
+        --libdir=/usr/lib32 \
+        --libexecdir=/usr/lib32 \
+        --with-headers="$PKG/usr/include" \
+        --host=i686-pc-linux-gnu \
+        --enable-kernel=5.10 \
+        --enable-stack-protector=strong \
+        "$fortify_option" \
+        --disable-cet \
+        --enable-bind-now \
+        --enable-multi-arch \
+        --disable-profile \
+        --disable-werror \
+        --without-gd
+    make
+    make install_root="$PKG" install
+
+    mv "$PKG/usr/include/gnu/stubs-32.h" "$SRC"
+    rm -r "$PKG/usr"/{bin,include,sbin,share} "$PKG"/{etc,sbin,var}
+    install -Dm644 "$SRC/stubs-32.h" "$PKG/usr/include/gnu/stubs-32.h"
+    install -Dm644 "$SRC/lib32.conf" "$PKG/etc/ld.so.conf.d/lib32.conf"
+    install -d "$PKG/lib"
+    ln -s /lib32/ld-linux.so.2 "$PKG/lib/ld-linux.so.2"
+}

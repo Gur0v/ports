@@ -1,0 +1,33 @@
+Preserve user CXXFLAGS after the shared C flags. Keep upstream per-file
+flags and bootstrap fortify exclusions last. glibc otherwise replaces
+CXXFLAGS entirely with flags derived from CFLAGS.
+
+--- a/config.make.in
++++ b/config.make.in
+@@ -94,6 +94,7 @@
+ CXX = @CXX@
+ BUILD_CC = @BUILD_CC@
+ CFLAGS = @CFLAGS@
++CXXFLAGS = @CXXFLAGS@
+ CPPFLAGS-config = @CPPFLAGS@
+ extra-nonshared-cflags = @extra_nonshared_cflags@
+ rtld-early-cflags = @rtld_early_cflags@
+--- a/Makeconfig
++++ b/Makeconfig
+@@ -1017,3 +1017,5 @@
+++user-cxxflags := $(CXXFLAGS)
++
+ # These are the flags given to the compiler to tell
+ # it what sort of optimization and/or debugging output to do.
+ ifndef	+cflags
+@@ -1129,7 +1131,9 @@
+ 				$(libof-$(<F)) $(libof-$(@F)),$(CFLAGS-$(lib)))
+ # Use our copies of cstdlib and cmath.
+ override CXXFLAGS = -I$(common-objpfx) $(c++-sysincludes) \
+-		    $(filter-out %frame-pointer,$(+cflags)) $(sysdep-CFLAGS) \
++		    $(filter-out %frame-pointer,$(+cflags)) $(+user-cxxflags) \
++		    $(if $(filter elf dlfcn csu debug,$(subdir)),$(no-fortify-source),$(+fortify-source)) \
++		    $(sysdep-CFLAGS) \
+ 		    $(CFLAGS-$(suffix $@)) $(CFLAGS-$(<F)) $(CFLAGS-$(@F))
+
+ # If everything is compiled with -fPIC (implicitly) we must tell this by

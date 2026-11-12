@@ -1,0 +1,8 @@
+Conflicts with core/glibc-32. In /etc/prt-get.aliases:
+    glibc-perf-32: glibc-32
+This satisfies dependencies only; it does not transfer package ownership.
+
+See ../glibc-perf/README for replacement precautions, CPU/fortify settings
+and build checks. Keep both ports at the same version.
+CC/CXX retain the selected compilers with -m32 -mstackrealign appended.
+CET is unsupported on i686.

@@ -1,0 +1,10 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzPVHAAaEtoJ0t7TkFtyTmUa/wm6SuPhLG0qkWKPAIumaavIz06D7y8zK1SVxFDG3Aqz+y5iRskyJsJ6ALsGjEw4=
+SHA256 (Pkgfile) = 1516fed13ec67926b9bca2ad707258c6c5e843f297f4e803d1d3a59b933b3027
+SHA256 (.footprint) = 3314ebffd1e973571d83bd7db022bdba7a0fd87a5a35f99d9649720c2566a51a
+SHA256 (glibc-2.44.tar.xz) = 37f600f2bef3c5e8300147059568b2a2e40a7ad6ccc65ce942556d49429cc667
+SHA256 (linux-6.6.119.tar.xz) = 3da09b980bb404cc28793479bb2d6c636522679215ffa65a04c893575253e5e8
+SHA256 (glibc-2.39-fhs-1.patch) = cbcece806ae8469fa3693fd181290b57045722b304cd2dd2a1cf3e160554f203
+SHA256 (glibc-2.44-upstream-fixes.patch) = ce0123b569d3c0da2365a7a38376f242b590b3524be558eb17dfbfe79defda46
+SHA256 (glibc-2.44-cxxflags.patch) = a114819d2654466068c01c43f6f0969c99368c4debaeb5dcb70da6d9bd0dd277
+SHA256 (lib32.conf) = 2f174d2bcefe1c29327690514f34d6970fffdd54398320ca23a11b5f1e3c9b2d
