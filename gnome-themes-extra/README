@@ -1,0 +1,4 @@
+Conflicts with gtk-theme-adwaita.
+
+After installation, refresh the HighContrast icon cache as root:
+    gtk-update-icon-cache -f -t /usr/share/icons/HighContrast
