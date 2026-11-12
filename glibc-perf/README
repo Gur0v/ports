@@ -1,0 +1,17 @@
+Conflicts with core/glibc. In /etc/prt-get.aliases:
+    glibc-perf: glibc
+This satisfies dependencies only; it does not transfer package ownership.
+Do not force conflicts or remove libc first. Keep rescue access and a working
+libc archive; binaries using new symbols can prevent rollback.
+
+Appends -O3 to user flags. Unset CC/CXX use gcc/g++ with -march/-mcpu from
+flags, or -march=native. Explicit CC/CXX are kept; set both with matching
+targets. Packages require compatible CPUs.
+
+Fortify defaults to 3; CFLAGS can set it, and GLIBC_FORTIFY=0/1/2/3 overrides
+it. Set _FORTIFY_SOURCE in CFLAGS, not CPPFLAGS. CET defaults to permissive;
+GLIBC_CET=no disables it.
+
+Keep the build with pkgmk -kw; run make check as non-root in a writable
+work/src/build. The post-install hook reexecutes init and regenerates locales;
+use prt-get --install-scripts or runscripts yes. pkgadd does not run it.

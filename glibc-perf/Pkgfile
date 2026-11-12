@@ -1,0 +1,139 @@
+# Description: The C library used in the GNU system
+# URL: https://www.gnu.org/software/libc/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: gcc binutils make gawk bison python3 texinfo
+
+name=glibc-perf
+version=2.44
+release=1
+_srcdir=glibc-$version
+_kernel_version=6.6.119
+
+source=(https://ftp.gnu.org/gnu/glibc/$_srcdir.tar.xz
+    https://www.kernel.org/pub/linux/kernel/v6.x/linux-$_kernel_version.tar.xz
+    glibc-2.39-fhs-1.patch
+    glibc-2.44-upstream-fixes.patch
+    glibc-2.44-cxxflags.patch
+    hosts resolv.conf nsswitch.conf host.conf ld.so.conf
+    locale-gen locale.gen.in)
+
+build() {
+    local flag target arch compiler options fortify=3 fortify_option cet
+    local -a flags
+    export CFLAGS="${CFLAGS-}"
+    export CXXFLAGS="${CXXFLAGS-$CFLAGS}"
+
+    for compiler in CC CXX; do
+        [ "${!compiler+x}" != x ] || continue
+        target= arch=
+        options=$CFLAGS
+        if [ "$compiler" = CXX ]; then
+            case "$CXXFLAGS" in
+                "$CFLAGS"*) options=$CXXFLAGS ;;
+                *) options+=" $CXXFLAGS" ;;
+            esac
+        fi
+        read -r -d '' -a flags < <(printf '%s\0' "$options")
+        for flag in "${flags[@]}"; do
+            case "$flag" in
+                -march=*|-mcpu=*) target+=" $flag"; arch=yes ;;
+                -m*) target+=" $flag" ;;
+            esac
+        done
+        [ -n "$arch" ] || target=" -march=native$target"
+        if [ "$compiler" = CC ]; then
+            CC="gcc$target"
+        else
+            CXX="g++$target"
+        fi
+    done
+    export CC CXX
+    export CFLAGS="${CFLAGS:+$CFLAGS }-O3"
+    export CXXFLAGS="${CXXFLAGS:+$CXXFLAGS }-O3"
+
+    read -r -d '' -a flags < <(printf '%s\0' "$CFLAGS")
+    for flag in "${flags[@]}"; do
+        case "$flag" in
+            -D_FORTIFY_SOURCE) fortify=1 ;;
+            -D_FORTIFY_SOURCE=1|-D_FORTIFY_SOURCE=2|-D_FORTIFY_SOURCE=3)
+                fortify=${flag##*=} ;;
+            -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=0) fortify=0 ;;
+        esac
+    done
+    read -r -d '' -a flags < <(printf '%s\0' "${CPPFLAGS-}")
+    for flag in "${flags[@]}"; do
+        case "$flag" in
+            -D_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*)
+                echo 'Set _FORTIFY_SOURCE in CFLAGS, not CPPFLAGS, for glibc.' >&2
+                return 1 ;;
+        esac
+    done
+    fortify=${GLIBC_FORTIFY-$fortify}
+    case "$fortify" in
+        0) fortify_option=--disable-fortify-source ;;
+        1|2|3) fortify_option="--enable-fortify-source=$fortify" ;;
+        *) echo 'GLIBC_FORTIFY must be 0, 1, 2 or 3.' >&2; return 1 ;;
+    esac
+    cet=${GLIBC_CET-permissive}
+    case "$cet" in
+        yes|no|permissive) ;;
+        *) echo 'GLIBC_CET must be yes, no or permissive.' >&2; return 1 ;;
+    esac
+
+    make -C "$SRC/linux-$_kernel_version" mrproper
+    make -C "$SRC/linux-$_kernel_version" INSTALL_HDR_PATH="$PKG/usr" headers_install
+    chown root:root "$PKG/usr"
+
+    patch -p1 -d "$SRC/$_srcdir" -i "$SRC/glibc-2.39-fhs-1.patch"
+    patch -p1 -d "$SRC/$_srcdir" -i "$SRC/glibc-2.44-upstream-fixes.patch"
+    patch -p1 -d "$SRC/$_srcdir" -i "$SRC/glibc-2.44-cxxflags.patch"
+
+    mkdir "$SRC/build"
+    cd "$SRC/build"
+
+    export libc_cv_slibdir=/lib
+    "$SRC/$_srcdir/configure" \
+        --prefix=/usr \
+        --libdir=/usr/lib \
+        --libexecdir=/usr/lib \
+        --with-headers="$PKG/usr/include" \
+        --enable-kernel=5.10 \
+        --enable-stack-protector=strong \
+        "$fortify_option" \
+        --enable-cet="$cet" \
+        --enable-bind-now \
+        --enable-multi-arch \
+        --disable-profile \
+        --disable-werror \
+        --without-gd
+    make
+    make install_root="$PKG" install
+
+    install -m 0644 "$SRC/$_srcdir/nscd/nscd.conf" "$PKG/etc"
+    install -d "$PKG/var/cache/nscd" "$PKG/var/lib/nss_db"
+    install -m 0644 "$SRC/"{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} "$PKG/etc"
+
+    ln -sf ../usr/share/zoneinfo/UTC "$PKG/etc/localtime"
+    install -d "$PKG/etc/ld.so.conf.d" "$PKG/usr/lib/locale"
+    touch "$PKG/etc/ld.so.cache"
+
+    install -Dm755 "$SRC/locale-gen" "$PKG/usr/sbin/locale-gen"
+    install -Dm644 "$SRC/locale.gen.in" "$PKG/etc/locale.gen"
+    sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
+        "$SRC/$_srcdir/localedata/SUPPORTED" >> "$PKG/etc/locale.gen"
+
+    I18NPATH="$SRC/$_srcdir/localedata" GCONV_PATH="$PWD/iconvdata" \
+        LC_ALL=C ./elf/ld.so --library-path "$PWD" ./locale/localedef \
+        --no-archive \
+        --alias-file="$SRC/$_srcdir/intl/locale.alias" \
+        --inputfile="$SRC/$_srcdir/localedata/locales/C" \
+        --charmap="$SRC/$_srcdir/localedata/charmaps/UTF-8" \
+        "$PKG/usr/lib/locale/C.UTF-8" || return 1
+    test -s "$PKG/usr/lib/locale/C.UTF-8/LC_CTYPE" || return 1
+
+    rm -r "$PKG/usr/share/locale" \
+        "$PKG/usr/bin/"{tzselect,zdump} \
+        "$PKG/usr/sbin/zic"
+    install -Dm644 "$SRC/$_srcdir/intl/locale.alias" \
+        "$PKG/usr/share/locale/locale.alias"
+}
