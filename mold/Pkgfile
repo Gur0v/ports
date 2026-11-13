@@ -1,0 +1,23 @@
+# Description: A modern linker
+# URL: https://github.com/rui314/mold
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: gcc pkgconf rust zlib zstd
+
+name=mold
+version=3.0.0
+release=1
+source=(https://github.com/rui314/mold/archive/refs/tags/v$version.tar.gz
+        no-libexec.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 -i $SRC/no-libexec.patch
+
+    export MOLD_LIBDIR=/usr/lib
+    export ZSTD_SYS_USE_PKG_CONFIG=1
+    cargo fetch --locked --target $(rustc -vV | sed -n 's|host: ||p')
+    cargo build --frozen --release --package mold-cli \
+        --no-default-features --features i386,x86_64
+
+    DESTDIR=$PKG PREFIX=/usr ./install-mold.sh
+}

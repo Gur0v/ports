@@ -1,0 +1,3 @@
+Requires Rust 1.95 or newer to build. Only i386 and x86_64 targets are enabled.
+Use -fuse-ld=mold or -B/usr/lib/mold with GCC or Clang.
+The system linker is not replaced.
