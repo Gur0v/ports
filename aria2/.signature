@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzLWwzTQH+yCQlxaO2QkqMJ7n8pMrwbgP5uNr9RgheEEUm1jIp8JVrelo2frQ9OG+U7v9qxcs+SVtNwtG3q+ZYgs=
+SHA256 (Pkgfile) = 2dd05279ecd2ae2f90b2091ecb90d845a27024cbd34d807e952fadbba5e08454
+SHA256 (.footprint) = 891e8d4b276ed9fafef0b15f5b52e112e5eda5a7f01a493a74aed4a50f22aec3
+SHA256 (aria2-1.37.0.tar.xz) = 60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b
+SHA256 (nettle-4.patch) = 6bcee4940a1e72c31ea18ca9e2d3d1fb4968e7bb627bf067b31f33ef368fe693
