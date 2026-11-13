@@ -23,6 +23,22 @@ build() {
     export CFLAGS="${CFLAGS-}"
     export CXXFLAGS="${CXXFLAGS-$CFLAGS}"
 
+    for options in CFLAGS CXXFLAGS LDFLAGS; do
+        read -r -d '' -a flags < <(printf '%s\0' "${!options}")
+        printf -v "$options" '%s' ''
+        for flag in "${flags[@]}"; do
+            case "$flag" in
+                -ffunction-sections|-fdata-sections|-fuse-ld=*|--ld-path=*|\
+                -Wl,--gc-sections|-Wl,--icf=*|-Wl,--pack-dyn-relocs=*|\
+                -Wl,-z,pack-relative-relocs) continue ;;
+            esac
+            printf -v "$options" '%s%s ' "${!options}" "$flag"
+        done
+        export "$options"
+    done
+    export LD=ld.bfd
+    export LDFLAGS="${LDFLAGS}-fuse-ld=bfd"
+
     for compiler in CC CXX; do
         [ "${!compiler+x}" != x ] || continue
         target= arch=
