@@ -1,0 +1,20 @@
+# Description: Parallel implementation of the gzip file compressor
+# URL: https://zlib.net/pigz/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: zlib
+
+name=pigz
+version=2.8
+release=1
+source=(https://zlib.net/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    make CC="${CC:-cc}" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
+
+    install -Dm755 pigz $PKG/usr/bin/pigz
+    ln -s pigz $PKG/usr/bin/unpigz
+    install -Dm644 pigz.1 $PKG/usr/share/man/man1/pigz.1
+    ln -s pigz.1 $PKG/usr/share/man/man1/unpigz.1
+    install -Dm644 README $PKG/usr/share/licenses/$name/README
+}
