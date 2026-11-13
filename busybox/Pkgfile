@@ -1,0 +1,23 @@
+# Description: A comprehensive collection of small Unix utilities in one executable
+# URL: https://busybox.net/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: libxcrypt perl
+
+name=busybox
+version=1.36.1
+release=1
+source=(https://busybox.net/downloads/$name-$version.tar.bz2 config)
+
+build() {
+    cd $name-$version
+    cp $SRC/config .config
+    export KCONFIG_NOTIMESTAMP=1
+    make oldconfig < /dev/null
+    make CC="${CC:-cc}" HOSTCC="${CC:-cc}" \
+        EXTRA_CFLAGS="$CFLAGS" EXTRA_LDFLAGS="$LDFLAGS" \
+        busybox docs/busybox.1
+
+    install -Dm755 busybox $PKG/usr/bin/busybox
+    install -Dm644 docs/busybox.1 $PKG/usr/share/man/man1/busybox.1
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

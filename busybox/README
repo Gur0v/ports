@@ -1,0 +1,6 @@
+Installs /usr/bin/busybox without applet links or setuid permissions.
+Run utilities as busybox ls, busybox wget or busybox ash.
+Does not replace coreutils or mkinitcpio-busybox.
+
+Uses expanded upstream defaults. PAM, SELinux, obsolete kernel interfaces
+and debugging options are disabled. Privileged applets require root.
