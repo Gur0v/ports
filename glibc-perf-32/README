@@ -4,5 +4,5 @@ This satisfies dependencies only; it does not transfer package ownership.
 
 See ../glibc-perf/README for replacement precautions, CPU/fortify settings
 and build checks. Keep both ports at the same version.
-CC/CXX retain the selected compilers with -m32 -mstackrealign appended.
+Uses GCC and BFD, with -m32 -mstackrealign and CPU targets from user flags.
 CET is unsupported on i686.
