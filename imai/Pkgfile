@@ -6,7 +6,7 @@
 name=imai
 version=0.1.0
 release=1
-_commit=2433b0cd97a26f9ac517ae64d5dae6fb34833858
+_commit=fb3e809df6f2ff62190923646f3d8cf13e4152c8
 source=(https://github.com/Gur0v/$name/archive/$_commit/$name-$_commit.tar.gz)
 
 build() {
