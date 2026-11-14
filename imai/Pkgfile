@@ -4,13 +4,12 @@
 # Depends on: bash bzip2 curl dash libarchive openssl pkgconf signify zlib
 
 name=imai
-version=0.1.0
+version=0.1.1
 release=1
-_commit=fb3e809df6f2ff62190923646f3d8cf13e4152c8
-source=(https://github.com/Gur0v/$name/archive/$_commit/$name-$_commit.tar.gz)
+source=(https://github.com/Gur0v/$name/archive/refs/tags/v$version/$name-$version.tar.gz)
 
 build() {
-    cd $name-$_commit
+    cd $name-$version
     make CC="${CC:-cc}" CFLAGS="$CFLAGS -std=c23" \
         LDFLAGS="$LDFLAGS" CRYPTO_LIBS="$(pkg-config --libs libcrypto)"
     make DESTDIR="$PKG" install
