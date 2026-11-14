@@ -1,0 +1,17 @@
+# Description: Drop-in replacement for CRUX pkgutils written in C
+# URL: https://github.com/Gur0v/imai
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: bash bzip2 curl dash libarchive openssl pkgconf signify zlib
+
+name=imai
+version=0.1.0
+release=1
+_commit=2433b0cd97a26f9ac517ae64d5dae6fb34833858
+source=(https://github.com/Gur0v/$name/archive/$_commit/$name-$_commit.tar.gz)
+
+build() {
+    cd $name-$_commit
+    make CC="${CC:-cc}" CFLAGS="$CFLAGS -std=c23" \
+        LDFLAGS="$LDFLAGS" CRYPTO_LIBS="$(pkg-config --libs libcrypto)"
+    make DESTDIR="$PKG" install
+}

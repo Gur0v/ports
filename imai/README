@@ -1,0 +1,6 @@
+Conflicts with pkgutils.
+Keep a pkgutils package archive available for recovery.
+
+To satisfy pkgutils dependencies, add to /etc/prt-get.aliases:
+
+imai: pkgutils
