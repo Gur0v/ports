@@ -1,0 +1,26 @@
+# Description: GNU Emacs with pure GTK support for Wayland
+# URL: https://www.gnu.org/software/emacs/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: acl alsa-lib dbus giflib gnutls gtk3 harfbuzz lcms2 libjpeg-turbo libpng librsvg libtiff libwebp libxml2 ncurses sqlite3 tree-sitter
+
+name=emacs
+version=31.1
+release=1
+source=(https://ftp.gnu.org/gnu/emacs/$name-$version.tar.xz)
+
+build() {
+    cd $name-$version
+
+    ./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib \
+        --localstatedir=/var \
+        --with-pgtk \
+        --with-tree-sitter \
+        --with-sqlite3 \
+        --without-native-compilation
+    make
+    make DESTDIR=$PKG install
+
+    rm -r $PKG/usr/share/info
+}
