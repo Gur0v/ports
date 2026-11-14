@@ -1,0 +1,6 @@
+x86_64 only. Conflicts with openjdk17-jdk.
+Installs to /usr/lib/java/openjdk17-jdk. Uses Temurin's bundled trust store.
+
+To satisfy openjdk17-jdk dependencies, add to /etc/prt-get.aliases:
+
+jdk17-bin: openjdk17-jdk

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzLM62TKzMu5Wmua1rbIAmSmdR3ttKFByVjt2+hFHz6KmXgok12UEvblEE0WvJAlnseZGldoKMhEK7RjovExFFwo=
+SHA256 (Pkgfile) = c63c6de8b20eda947612780434edf420bbd4a98276e346010a75e6d3dc31ec00
+SHA256 (.footprint) = d48f1393c5f82b13ff07d80b0a815eb076d3d4aab5d428a05b766d7f03d015f8
+SHA256 (OpenJDK17U-jdk_x64_linux_hotspot_17.0.21_9.tar.gz) = 8b9b611d917e3dfd8419d3566b5949226f69b052fed7e109c1368add1dfe8711
