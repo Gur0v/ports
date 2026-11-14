@@ -14,6 +14,7 @@ target/
 *.distro
 
 # Downloaded license files
+/hydra-launcher/hydra-launcher-*-LICENSE
 /mullvad-vpn/mullvad-*-LICENSE.md
 /pear-desktop/pear-desktop-*-license
 
