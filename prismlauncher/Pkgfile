@@ -1,0 +1,41 @@
+# Description: Minecraft launcher with support for multiple instances and accounts
+# URL: https://prismlauncher.org/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: cmake cmark extra-cmake-modules gamemode hicolor-icon-theme libarchive ninja openjdk17-jdk pkgconf qrencode qt6-base qt6-networkauth zlib
+
+name=prismlauncher
+version=11.1.1
+release=1
+_toml_version=3.4.0
+source=(https://github.com/PrismLauncher/PrismLauncher/releases/download/$version/PrismLauncher-$version.tar.gz
+        https://github.com/marzer/tomlplusplus/archive/v$_toml_version/tomlplusplus-$_toml_version.tar.gz)
+
+build() {
+    export JAVA_HOME=/usr/lib/java/openjdk17-jdk
+    export PATH="$JAVA_HOME/bin:$PATH"
+
+    # toml++ is header-only and is not available in the CRUX collections.
+    cmake -S tomlplusplus-$_toml_version -B toml-build -G Ninja \
+        -D CMAKE_INSTALL_PREFIX="$SRC/toml-install" \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release
+    cmake --install toml-build
+
+    cmake -S PrismLauncher-$version -B build -G Ninja \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_LIBDIR=lib \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_C_FLAGS_RELEASE="$CFLAGS -DNDEBUG" \
+        -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -DNDEBUG" \
+        -D tomlplusplus_DIR="$SRC/toml-install/lib/cmake/tomlplusplus" \
+        -D Launcher_BUILD_PLATFORM=CRUX \
+        -D Launcher_ENABLE_JAVA_DOWNLOADER=ON \
+        -D BUILD_TESTING=OFF
+    cmake --build build
+    DESTDIR="$PKG" cmake --install build
+
+    install -Dm644 PrismLauncher-$version/COPYING.md \
+        "$PKG/usr/share/licenses/$name/COPYING.md"
+    install -Dm644 tomlplusplus-$_toml_version/LICENSE \
+        "$PKG/usr/share/licenses/$name/tomlplusplus-LICENSE"
+}

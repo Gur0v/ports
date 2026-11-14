@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzE728MqggTdQXfHgSJ1oXlaVrfakJotSsqCyINgRL7FUTGWebggI5FQIqFEcjK5ZhY2IiixumADD7RpTw69xtw8=
+SHA256 (Pkgfile) = 99049b71932e4a04eed805f09b6416493c325c296fac965cd9012487230cb179
+SHA256 (.footprint) = 52033c99ba50c5c4e45099fa73580e907cac4e493751883320b366e9d1fc5b85
+SHA256 (PrismLauncher-11.1.1.tar.gz) = 9ea53f93714cd2a59dc0f38153690a59a3f06f439934d1410ec364cc7f363eb5
+SHA256 (tomlplusplus-3.4.0.tar.gz) = 8517f65938a4faae9ccf8ebb36631a38c1cadfb5efa85d9a72e15b9e97d25155
