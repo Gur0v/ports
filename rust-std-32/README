@@ -1,0 +1,2 @@
+Requires the exact matching rust-bin version. Upgrade both together.
+Build with --target=i686-unknown-linux-gnu (rustc or Cargo).

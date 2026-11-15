@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzFirUbEAaW5jKUjstHbP6Joa7/iufPDld3X71JjoonzZheTR+tRpyKKYuiQa42ycuUGvcjS43AhR0CG/aP27rgE=
+SHA256 (Pkgfile) = 0ce455c40ac270bfc42eae4e83d680106175c972e6c86cb538ca5ffbe8a97e20
+SHA256 (.footprint) = 9f232238497cdc4a309a96306ce136d86570fe9136ea94161b72d5fb96794e1f
+SHA256 (rust-std-1.100.0-i686-unknown-linux-gnu.tar.xz) = c0194f57d890d8bd11a3d70909c55f7b31541d89bc76b7c43f84b3d1db2dadab

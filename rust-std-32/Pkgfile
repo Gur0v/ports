@@ -1,0 +1,21 @@
+# Description: Rust standard libraries for the i686 GNU/Linux target (binary)
+# URL: https://www.rust-lang.org/
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: rust-bin glibc-32 gcc
+
+name=rust-std-32
+version=1.100.0
+release=1
+source=(https://static.rust-lang.org/dist/rust-std-$version-i686-unknown-linux-gnu.tar.xz)
+
+build() {
+    cd rust-std-$version-i686-unknown-linux-gnu
+
+    install -d "$PKG/usr/lib/rustlib"
+    cp -R rust-std-i686-unknown-linux-gnu/lib/rustlib/i686-unknown-linux-gnu \
+        "$PKG/usr/lib/rustlib/"
+
+    install -d "$PKG/usr/share/licenses/$name"
+    install -m 644 LICENSE-APACHE LICENSE-MIT COPYRIGHT \
+        "$PKG/usr/share/licenses/$name/"
+}
