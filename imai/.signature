@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/gurov.pub
-RWQkZCjK0V/SzNpRIdSSbm8Jpn0C0rRO8kACHhUMK9qSa1KyvLpczb2q98mrxQrQ3y/TtVvbuCnodc8QL9I1YAz7XTjWTYXo7gY=
-SHA256 (Pkgfile) = 479947c6e8a986de94f674bbe78ce633b398bce19faa294522f1b662923c1e19
+RWQkZCjK0V/SzIKsvajVUh3jBT4Rq7JdoQGXkB7tngKf8waISTgz2GQvbCSPdDtlhMT023xeifj9FgiRyON2qhTMl+ExJSIseAY=
+SHA256 (Pkgfile) = e584853d43bf171fc27edabd5098608b1a8e609d4cc6958b4b72504c2ed042f4
 SHA256 (.footprint) = 7d143f18f63bba5569d729eefd0d0f04ae4b0539f8bd71f9cfd6955b9e7c639d
-SHA256 (imai-0.1.5.tar.gz) = 0186e22f919d8372906cb6e4ed60b656bd193670c5ff88df5f15b882ea02da42
+SHA256 (imai-0.1.6.tar.gz) = 452064a03c21b7aa7fd5bd0bbdf966a94802408f54da8f8d26d858d0e303b7ef
