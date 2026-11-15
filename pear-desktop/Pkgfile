@@ -4,7 +4,7 @@
 # Depends on: alsa-lib cups eudev expat gtk3 hicolor-icon-theme libdrm libnotify libpulse libsecret libxkbcommon mesa nss xdg-utils xorg-libxcb xorg-libxcomposite xorg-libxdamage xorg-libxfixes xorg-libxrandr xorg-libxscrnsaver xorg-libxtst
 
 name=pear-desktop
-version=3.12.0
+version=3.12.1
 release=1
 source=(https://github.com/pear-devs/$name/releases/download/v$version/youtube-music_${version}_amd64.deb
         https://raw.githubusercontent.com/pear-devs/$name/v$version/license)
