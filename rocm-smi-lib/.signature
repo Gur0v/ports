@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzAQm2N9+Gn5KAN554RfFATkXIttDXim0ggKQt1z0+Zimme23ceCJ7VTifz7RW0c7tCp3DM+NYRpR4Vyjk0jyJw8=
+SHA256 (Pkgfile) = 67f667adeb33081b726704fa4e507987ef95d23dfa759301b46b4bc144816cae
+SHA256 (.footprint) = 2a3f1c75ac2cfc9340b71c032fd2ae0b6ad29179a749ccd6db5554f98921be46
+SHA256 (rocm-smi-lib.tar.gz) = 9648663235c93bbdec91149003c7b1b9e7dcdf3a3728d527298f2ce457916ecb

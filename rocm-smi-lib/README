@@ -1,0 +1,2 @@
+Requires a supported AMD GPU and the amdgpu kernel driver.
+Upstream deprecates ROCm SMI in favor of AMD SMI.

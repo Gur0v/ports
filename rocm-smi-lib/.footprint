@@ -1,0 +1,33 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/rocm-smi -> ../libexec/rocm_smi/rocm_smi.py
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/oam/
+-rw-r--r--	root/root	usr/include/oam/amd_oam.h
+-rw-r--r--	root/root	usr/include/oam/oam_mapi.h
+drwxr-xr-x	root/root	usr/include/rocm_smi/
+-rw-r--r--	root/root	usr/include/rocm_smi/kfd_ioctl.h
+-rw-r--r--	root/root	usr/include/rocm_smi/rocm_smi.h
+-rw-r--r--	root/root	usr/include/rocm_smi/rocm_smi64Config.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/rocm_smi/
+-rw-r--r--	root/root	usr/lib/cmake/rocm_smi/rocm_smi-config-version.cmake
+-rw-r--r--	root/root	usr/lib/cmake/rocm_smi/rocm_smi-config.cmake
+-rw-r--r--	root/root	usr/lib/cmake/rocm_smi/rocm_smiTargets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/rocm_smi/rocm_smiTargets.cmake
+lrwxrwxrwx	root/root	usr/lib/liboam.so -> liboam.so.1
+lrwxrwxrwx	root/root	usr/lib/liboam.so.1 -> liboam.so.1.0
+-rwxr-xr-x	root/root	usr/lib/liboam.so.1.0
+lrwxrwxrwx	root/root	usr/lib/librocm_smi64.so -> librocm_smi64.so.1
+lrwxrwxrwx	root/root	usr/lib/librocm_smi64.so.1 -> librocm_smi64.so.1.0
+-rwxr-xr-x	root/root	usr/lib/librocm_smi64.so.1.0
+drwxr-xr-x	root/root	usr/libexec/
+drwxr-xr-x	root/root	usr/libexec/rocm_smi/
+-rwxr-xr-x	root/root	usr/libexec/rocm_smi/rocm_smi.py
+-rwxr-xr-x	root/root	usr/libexec/rocm_smi/rsmiBindings.py
+-rwxr-xr-x	root/root	usr/libexec/rocm_smi/rsmiBindingsInit.py
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/licenses/
+drwxr-xr-x	root/root	usr/share/licenses/rocm-smi-lib/
+-rw-r--r--	root/root	usr/share/licenses/rocm-smi-lib/LICENSE
