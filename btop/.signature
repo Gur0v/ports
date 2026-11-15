@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzOjOINKHl6hZHYFVKNBEp5XOEehTV4v4QEmUje7UdyBcow2INiE7hpDjZ6iFb1z1FDUI+cTmtSVmFxYo9ND8Cg0=
+SHA256 (Pkgfile) = 8270f8041c4fa5efd509a03eedabebbb7cf8ce12260a5ada42922f7c1364680e
+SHA256 (.footprint) = 1570dc3c900ba779ec5c2f538728042043f8757b521b03f20ae4d8b19af731f8
+SHA256 (btop-1.4.8.tar.gz) = 67e07c21b770a6d884c5e50ba1d2cfc90732ea57459367d8732ec7ecbeb3be5f

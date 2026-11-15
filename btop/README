@@ -1,0 +1,2 @@
+AMD ROCm monitoring needs rocm-smi-lib; NVIDIA monitoring needs the driver's NVML library.
+Intel GPU and CPU power monitoring may need additional perf/MSR permissions.
