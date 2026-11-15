@@ -1,0 +1,2 @@
+Add event rules to /etc/acpi/events; none are installed.
+Add acpid to SERVICES in /etc/rc.conf to start at boot.

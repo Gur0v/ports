@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzBsZm0QRDYQR2cPqdO2FXVV2xTdrgrDuWGZHSZyUxTSP1wBIs1gEhLFVo6cBnpvAxqp1xpxEF80hkXHe9vqDbQ4=
+SHA256 (Pkgfile) = 4a051d555c36922b1b94cb4f05235d6a7c610c3af865e340ce2fdf5f4cea7408
+SHA256 (.footprint) = d12cf52db3a686bb2f7928a14eac34848cc8d195e79df14e3e0c92f5d65bca57
+SHA256 (acpid-2.0.34.tar.xz) = 2d095c8cfcbc847caec746d62cdc8d0bff1ec1bc72ef7c674c721e04da6ab333
+SHA256 (acpid) = 992363cd8364ae1cef8c62fd907989e42800873008d01c77ae3fdce6cabbffb0
