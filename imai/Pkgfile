@@ -4,7 +4,7 @@
 # Depends on: bash bzip2 curl dash libarchive openssl pkgconf signify zlib
 
 name=imai
-version=0.1.3
+version=0.1.4
 release=1
 source=(https://github.com/Gur0v/$name/archive/refs/tags/v$version/$name-$version.tar.gz)
 
