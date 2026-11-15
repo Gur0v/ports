@@ -22,5 +22,12 @@ build() {
     make
     make DESTDIR=$PKG install
 
+    # The dump loader falls back to the invoked executable's name in PATH_EXEC.
+    local dumpdir
+    for dumpdir in "$PKG/usr/lib/emacs/$version"/*; do
+        mv "$dumpdir"/emacs-*.pdmp "$dumpdir/emacs.pdmp"
+        ln -s emacs.pdmp "$dumpdir/emacs-$version.pdmp"
+    done
+
     rm -r $PKG/usr/share/info
 }
