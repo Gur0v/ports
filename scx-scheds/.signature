@@ -1,0 +1,8 @@
+untrusted comment: verify with /etc/ports/gurov.pub
+RWQkZCjK0V/SzNeealcivK0q6VDRo2l0DuZKM+YB7sSa3kq9b4Luc4uI4ewH5s7dst7mWsn0x5EDzWKzV9nP7qXc3Ku8QmG+DwI=
+SHA256 (Pkgfile) = aafeaec4f61697a9957189fcd502123fed416ab9dfada3778d274b7273b76724
+SHA256 (.footprint) = 967274d16a9b058f0ef100b7579e258e5388242511bc19066b17c11c5c0304d5
+SHA256 (scx-1.1.4.tar.gz) = efce300f7816c2ef14028acee58150c792dadf4ebe4950aff263b54771adb2f4
+SHA256 (percpu-inline.patch) = 23a44571e4c87b7303060ad6a0bab701c7b800644a2a152f4b1618d1fe01e128
+SHA256 (scx.service) = 816b94eade988cb81cbc0ca234eac5a3c372f906ead2179a803e1cf109d2ff5e
+SHA256 (scx.conf) = cc438b47e5883594510ca3a24c907ebd093b0dd6d642299f6ef2a7cafa037800

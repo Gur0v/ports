@@ -1,0 +1,15 @@
+Make per-CPU pointer helpers inline like the pointer-to-pointer helpers.
+This avoids emitting unused functions referencing incomplete kernel types
+(psi_group_cpu on x86), which crash LLVM 23 BPF code generation.
+
+--- a/scheds/include/scx/percpu.bpf.h
++++ b/scheds/include/scx/percpu.bpf.h
+@@ -31,7 +31,7 @@
+
+
+ #define DEFINE_PER_CPU_PTR_FUNC(func_name, type, var_name)	\
+-type *func_name(s32 cpu)					\
++static __always_inline type *func_name(s32 cpu)		\
+ {								\
+ 	type *ptr;						\
+ 								\

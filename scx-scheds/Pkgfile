@@ -1,0 +1,37 @@
+# Description: sched_ext schedulers and tools
+# URL: https://github.com/sched-ext/scx
+# Maintainer: Gurov, thuggerthugger1 at duck dot com
+# Depends on: bash clang elfutils jq libbpf libseccomp llvm openssl protobuf python3 rust zlib
+
+name=scx-scheds
+version=1.1.4
+release=1
+source=(https://github.com/sched-ext/scx/archive/v$version/scx-$version.tar.gz
+        percpu-inline.patch
+        scx.service
+        scx.conf)
+
+build() {
+    cd scx-$version
+    patch -p1 < $SRC/percpu-inline.patch
+    export CARGO_TARGET_DIR=target
+
+    cargo fetch --locked --target $(rustc -vV | sed -n 's|host: ||p')
+    cargo build --release --frozen --workspace \
+        --exclude scx_rlfifo \
+        --exclude scx_mitosis \
+        --exclude scx_characterize \
+        --exclude xtask \
+        --exclude vmlinux_docify \
+        --exclude scx_arena_selftests \
+        --exclude scx_arena_libarena_selftests
+
+    install -d $PKG/usr/bin
+    for bin in target/release/scx_* target/release/scxtop target/release/scx-forge-agent; do
+        [ -f "$bin" ] && [ -x "$bin" ] || continue
+        install -m755 "$bin" $PKG/usr/bin/
+    done
+    install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+    install -Dm755 $SRC/scx.service $PKG/etc/rc.d/scx
+    install -Dm644 $SRC/scx.conf $PKG/etc/default/scx
+}

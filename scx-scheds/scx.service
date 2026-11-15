@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# /etc/rc.d/scx: start/stop a sched_ext scheduler
+#
+
+SSD=/sbin/start-stop-daemon
+PIDFILE=/run/scx.pid
+SCX_SCHEDULER=scx_rusty
+SCX_FLAGS=
+[ ! -r /etc/default/scx ] || . /etc/default/scx
+
+case $SCX_SCHEDULER in
+    scx_*) ;;
+    *) echo "Invalid SCX_SCHEDULER: $SCX_SCHEDULER" >&2; exit 1 ;;
+esac
+case $SCX_SCHEDULER in
+    *[!a-zA-Z0-9_]*) echo "Invalid SCX_SCHEDULER: $SCX_SCHEDULER" >&2; exit 1 ;;
+esac
+PROG=/usr/bin/$SCX_SCHEDULER
+set -f
+
+case $1 in
+    start)
+        [ -x "$PROG" ] || { echo "$PROG not found" >&2; exit 1; }
+        $SSD --start --background --make-pidfile --pidfile "$PIDFILE" \
+            --exec "$PROG" -- $SCX_FLAGS
+        ;;
+    stop)
+        $SSD --stop --oknodo --retry TERM/30 --pidfile "$PIDFILE" && rm -f "$PIDFILE"
+        ;;
+    restart)
+        $0 stop && $0 start
+        ;;
+    status)
+        $SSD --status --pidfile "$PIDFILE"
+        ;;
+    *)
+        echo "usage: $0 [start|stop|restart|status]"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,8 @@
+Requires Linux 6.12 or newer with CONFIG_SCHED_CLASS_EXT, CONFIG_BPF,
+CONFIG_BPF_SYSCALL, CONFIG_BPF_JIT, CONFIG_BPF_JIT_ALWAYS_ON,
+CONFIG_BPF_JIT_DEFAULT_ON, CONFIG_DEBUG_INFO_BTF and CONFIG_FUNCTION_TRACER.
+Some schedulers require newer kernel features.
+
+Configure the scheduler and arguments in /etc/default/scx.
+Add scx to the SERVICES array in /etc/rc.conf to start it at boot.
+Do not run another sched_ext scheduler at the same time.
